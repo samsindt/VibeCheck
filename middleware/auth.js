@@ -7,7 +7,7 @@ module.exports = {
         console.log(req.cookies);
         try {
             if (!token) {
-                res.redirect('/login');
+                res.redirect('/account/login');
                 return;
             }
             const decrypt = jwt.verify(token, 'theSecret');

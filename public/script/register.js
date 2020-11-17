@@ -46,9 +46,9 @@ function submitForm () {
     formData.forEach((value, key) => rawObj[key] = value);
     var jsonData = JSON.stringify(rawObj);
 
-    fetch('/register', {
+    fetch('/account/register', {
         method: 'POST',
-        credentials: "include",
+        credentials: 'include',
         body: jsonData,
         headers: {
             'Content-Type': 'application/json'
