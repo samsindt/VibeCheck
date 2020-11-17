@@ -23,7 +23,7 @@
 
     form.addEventListener('submit', e => {
         e.preventDefault();
-        var formData = new FormData(document.getElementById('registration_form'));
+        var formData = new FormData(form);
         // to json
 
         var rawObj = {};

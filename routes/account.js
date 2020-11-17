@@ -13,21 +13,21 @@ router.post('/login', function(req, res) {
 
     UserModel.findOne({username: req.body.username}, function(err, user) {
         if (err) {
-            return res.status(422).json( {success: false, error: err});
+            return res.status(422).json( {success: false});
         }
 
         if (user) {
             // generate jwt and add to cookies, then redirect to home page
             setTokenCookie(res, req.body.username)
 
-            return res.redirect('/');
+            return res.json({success: true});
         } else {
-            res.status(401).json( {success: false});
+            res.status(401).json( {success: false, invalidCredentials: true});
         }
     });
-  });
+});
 
-  router.get('/register', function(req, res) {
+router.get('/register', function(req, res) {
     res.render('register');
 });
 
