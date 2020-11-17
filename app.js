@@ -11,7 +11,6 @@ var viewEngine = require('mustache-express');
 
 // require routers
 var indexRouter = require('./routes/index');
-var apiRouter = require('./routes/api');
 var accountRouter = require('./routes/account'); 
 
 // setup database connection
@@ -19,6 +18,8 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/vibeCheckDB', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
 });
 
 var db = mongoose.connection;
@@ -42,7 +43,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setup routes
-app.use('/api', apiRouter);
 app.use('/account', accountRouter);
 app.use('/', auth.verifyJWTCookie, indexRouter);
 // catch 404 and forward to error handler
@@ -51,7 +51,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res) {
+app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

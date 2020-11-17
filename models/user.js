@@ -12,10 +12,6 @@ var UserSchema = new mongoose.Schema({
         }, 
      firstname: {type: String, required: true}, 
      lastname: {type: String, required: true},
-     squestions: [{
-         prompt: String,
-         answer: String,
-     }], // it seems that you can't set a validator for type objects in an array, but ideally we would validate that there is at least one element in array
 });
 
 UserSchema.methods.setPassword = function(password) {
