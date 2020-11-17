@@ -4,6 +4,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var auth = require('./middleware/auth');
 
 // require view engine
 var viewEngine = require('mustache-express');
@@ -11,6 +12,19 @@ var viewEngine = require('mustache-express');
 // require routers
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
+var loginRouter = require('./routes/login');
+var registerRouter = require('./routes/register');
+
+
+// setup database connection
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/vibeCheckDB', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // setup express app
 var app = express();
@@ -30,9 +44,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setup routes
-app.use('/', indexRouter);
 app.use('/api', apiRouter);
-
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
+app.use('/', auth.verifyJWTCookie, indexRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
