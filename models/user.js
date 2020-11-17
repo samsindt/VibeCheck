@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
 
 var UserSchema = new mongoose.Schema({
      username: {type: String, required: true, unique: true},
-     password: {type: String, required: true},
+     hash: {type: String, required: true},
      email: {
          type: String,
          required: true,
@@ -17,4 +18,13 @@ var UserSchema = new mongoose.Schema({
      }], // it seems that you can't set a validator for type objects in an array, but ideally we would validate that there is at least one element in array
 });
 
-module.exports = mongoose.model('UserModel', UserSchema);
+UserSchema.methods.setPassword = function(password) {
+    const saltRoundCost = 10;
+    this.hash = bcrypt.hashSync(password, saltRoundCost);
+};
+
+UserSchema.methods.isValidPassword = function(password) {
+    return bcrypt.compareSync(password, this.hash);
+};
+
+module.exports = mongoose.model('User', UserSchema);

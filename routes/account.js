@@ -10,51 +10,51 @@ router.get('/login', function(req, res) {
 router.post('/login', function(req, res) {
     //query db for login
 
-    UserModel.exists({username: req.body.username, password: req.body.password}, function(err, hasDoc) {
+    UserModel.findOne({username: req.body.username}, function(err, user) {
         if (err) {
             return res.status(422).json( {success: false, error: err});
-        } else if (hasDoc) {
+        }
+
+        if (user) {
             // generate jwt and add to cookies, then redirect to home page
             setTokenCookie(res, req.body.username)
 
             return res.redirect('/');
         } else {
-            res.status(401).json( {success: false, error: err});
-            //send rejection message
+            res.status(401).json( {success: false});
         }
     });
   });
-
 
   router.get('/register', function(req, res) {
     res.render('register');
 });
 
 router.post('/register', function(req, res) {
-    UserModel.create({
-        username: req.body.username,
-        password: req.body.password,
-        email: req.body.email,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        squestions: req.body.squestions,
-        },
-        function(err) {
-            if (err) {
-                // check for duplicate username
-                res.status(422);
+    var newUser = new UserModel();
+    newUser.username = req.body.username;
+    newUser.setPassword(req.body.password);
+    newUser.email = req.body.email;
+    newUser.firstname = req.body.firstname;
+    newUser.lastname = req.body.lastname;
+    // TODO: security questions
 
-                if (err.name === 'MongoError' && err.code === 11000) {
-                    return res.json({ success: false, duplicateUser: true});
-                }
-
-                return res.json({ success: false, error: err}) // probably should redirect to dedicated error page.
+    newUser.save(function(err) {
+        if (err) {
+            
+            res.status(422);
+            // check for duplicate username
+            if (err.name === 'MongoError' && err.code === 11000) {
+                return res.json({ success: false, duplicateUser: true});
             }
 
-            setTokenCookie(res, req.body.username);
+            return res.json({ success: false, error: err}) // probably should redirect to dedicated error page.
+        }
 
-            res.json({ success: true});
-        });
+        setTokenCookie(res, req.body.username);
+
+        res.json({ success: true});
+    });
 });
 
 router.post('/logout', function(req, res) {
