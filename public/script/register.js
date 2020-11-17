@@ -57,7 +57,7 @@ function submitForm () {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href='/';
+            window.location.href = '/';
         } else if (data.duplicateUser) {
             document.getElementById('username').setCustomValidity('Username unavailable. Please try another');
             retVal = false;

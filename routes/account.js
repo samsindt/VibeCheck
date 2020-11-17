@@ -31,7 +31,6 @@ router.post('/login', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-    console.log(req.body);
     UserModel.create({
         username: req.body.username,
         password: req.body.password,
@@ -56,6 +55,11 @@ router.post('/register', function(req, res) {
 
             res.json({ success: true});
         });
+});
+
+router.post('/logout', function(req, res) {
+    res.cookie('token', '', { expires: new Date()});
+    res.sendStatus(200);
 });
 
 function setTokenCookie(res, username) {

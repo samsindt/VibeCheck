@@ -3,7 +3,12 @@ var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
      username: {type: String, required: true, unique: true},
      password: {type: String, required: true},
-     email: {type: String, required: true, match: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}, 
+     email: {
+         type: String,
+         required: true,
+         // regex from https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#Validation 
+         match: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+        }, 
      firstname: {type: String, required: true}, 
      lastname: {type: String, required: true},
      squestions: [{
