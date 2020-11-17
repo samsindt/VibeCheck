@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken');
 module.exports = {
     verifyJWTCookie: (req, res, next) => {
         const token = req.cookies.token || '';
-
-        console.log(req.cookies);
         try {
             if (!token) {
                 res.redirect('/account/login');

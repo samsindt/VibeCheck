@@ -19,50 +19,32 @@
         username.setCustomValidity('');
     }
 
-    /*var form = document.getElementById('registration_form');
+    var form = document.getElementById('registration_form');
 
-    form.addEventListener('submit'), e => {
+    form.addEventListener('submit', e => {
         e.preventDefault();
-        console.log("called")
-        fetch('/register', {
+        var formData = new FormData(document.getElementById('registration_form'));
+        // to json
+
+        var rawObj = {};
+        formData.forEach((value, key) => rawObj[key] = value);
+        var jsonData = JSON.stringify(rawObj);
+
+        fetch('/account/register', {
             method: 'POST',
-            body: new FormData(form),
+            credentials: 'include',
+            body: jsonData,
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
         .then(response => response.json())
         .then(data => {
-            if (!data.success && data.duplicateUser) {
+            if (data.success) {
+                window.location.href = '/';
+            } else if (data.duplicateUser) {
                 document.getElementById('username').setCustomValidity('Username unavailable. Please try another');
             }
         });
-    }*/
-})();
-
-function submitForm () {
-    var retVal = true;
-    var formData = new FormData(document.getElementById('registration_form'));
-    // to json
-
-    var rawObj = {};
-    formData.forEach((value, key) => rawObj[key] = value);
-    var jsonData = JSON.stringify(rawObj);
-
-    fetch('/account/register', {
-        method: 'POST',
-        credentials: 'include',
-        body: jsonData,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = '/';
-        } else if (data.duplicateUser) {
-            document.getElementById('username').setCustomValidity('Username unavailable. Please try another');
-            retVal = false;
-        }
     });
-
-    return retVal;
-}
+})();
