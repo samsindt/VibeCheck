@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang = en>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegistrationPage</title>
+    <link href = "visual.css" rel = "stylesheet" type = "text/css">
+</head>
+<body>
+    <div class = "top">
+        <div class = "title-bar">
+            <img src = "VibeCheck_Logo.png" class = "logo">
+            <a href = "./index.html">
+                Vibe Check
+            </a>
+        </div>
+    </div>
+    <div class = "sign-in-sign-up">
+        Sign Up For VibeCheck
+    </div>
+    <div class = "registration">
+        <form>
+            <div class = "row">
+                <div for = "first-name">
+                    First Name
+                </div>
+                <input type = "text" name = "first-name" placeholder = "Enter Your First Name" required>
+                <div for = "last-name">
+                    Last Name
+                </div>
+                <input type = "text" name = "last-name" placeholder = "Enter Your Last Name" required>
+                <div for = "username">
+                    Username
+                </div>
+                <input type = "text" name = "username" placeholder = "Enter Username" required>
+                <div for = "password">
+                    Password
+                </div>
+                <input type = "password" name = "password" placeholder = "Enter Password" required>
+                <div for = "re-enter-password">
+                    Verify Your Password
+                </div>
+                <input type = "password" name = "password" placeholder = "Enter Password" required>
+                <div for = "email">
+                    Email
+                </div>
+                <input type = "text" name = "email" placeholder = "Enter email" required>
+                <button type="submit" class="registerbtn">
+                    Register
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+    function myFunction (x) {
+        x.classList.toggle("change");
+    }
+</script>
