@@ -1,0 +1,4 @@
+{
+    "databaseUrl": "mongodb://127.0.0.1:27017/vibeCheckDB",
+    "jwtSecretKey": "pizza,dietcoke,cinnamonwheel"
+}

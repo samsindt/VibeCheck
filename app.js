@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var auth = require('./middleware/auth');
+var config = require('./config.json');
 
 // require view engine
 var viewEngine = require('mustache-express');
@@ -15,7 +16,7 @@ var accountRouter = require('./routes/account');
 
 // setup database connection
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/vibeCheckDB', {
+mongoose.connect(config.databaseUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

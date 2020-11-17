@@ -2,6 +2,7 @@ var express = require('express');
 const jwt = require('jsonwebtoken');
 var router = express.Router();
 var UserModel = require('../models/user');
+const config = require('../config.json');
 
 router.get('/login', function(req, res) {
     res.render('login');
@@ -64,7 +65,7 @@ router.post('/logout', function(req, res) {
 
 function setTokenCookie(res, username) {
     const expiration = 90000;
-    const token = jwt.sign({username: username}, 'theSecret');
+    const token = jwt.sign({username: username}, config.jwtSecretKey);
     res.cookie('token', token, {
         expires: new Date(Date.now() + expiration),
         secure: false,
