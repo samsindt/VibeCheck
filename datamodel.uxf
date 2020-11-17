@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>230</y>
+      <w>210</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>User
+--
++ username: String
++ password: String
++ email: String
++ firstname: String
++ lastname: String
++ answers: Answer[0..*]
++ questions: Question[0..*]
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>490</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Question
+--
++ text: String
++ answers: Answer[0..*]
++ user: User[1]
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>490</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Answer
+--
++ text: String
++ question: Question[1]
++ users: User[0..*]
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>390</y>
+      <w>50</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>310</y>
+      <w>240</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;10.0;200.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>530</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+</diagram>
