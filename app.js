@@ -21,7 +21,8 @@ mongoose.connect(config.databaseUrl, {
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
-});
+},
+err => {if (err) throw err});
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
