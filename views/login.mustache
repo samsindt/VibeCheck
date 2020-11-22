@@ -1,15 +1,49 @@
-<html>
+<!DOCTYPE html>
+<html lang = en>
     <head>
-        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LoginPage</title>
+        <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
-        <form id="login_form">
-            <legend>Login</legend>
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <input type="submit">
-        </form>
-        <a href="/account/register">Register</a>
-        <script type="text/javascript" src="/script/login.js"></script>
-    <body>
+        <div class = "top">
+            <div class = "title-bar">
+                <img src = "../img/VibeCheck_Logo.png" class = "logo">
+                <a href = "./index.html">
+                    VibeCheck
+                </a>
+            </div>
+        </div> 
+        <div class = "row">
+            <div class = "column">                                                                                
+                <div class = "sign-in-sign-up heading">
+                    Log In
+                </div>
+                <form id="login_form">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    
+                    <input type="submit">
+                </form>
+                <script type="text/javascript" src="/script/login.js"></script>
+            </div>
+            <div class = "column">
+                <div class = "sign-in-sign-up heading">
+                    Need to Register?
+                </div>
+                <form method="get" action="/account/register">
+                    <button type="submit">Register</button>
+                </form>
+                
+            </div>
+        </div>
+    </body>
 </html>
+
+<script>
+    function myFunction (x) {
+        x.classList.toggle("change");
+    }
+</script>
