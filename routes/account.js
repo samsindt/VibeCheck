@@ -2,7 +2,9 @@ var express = require('express');
 const jwt = require('jsonwebtoken');
 var router = express.Router();
 var UserModel = require('../models/user');
+var SecurityQuestionModel = require('../models/security-question');
 const config = require('../config.json');
+const securityQuestion = require('../models/security-question');
 
 router.get('/login', function(req, res) {
     res.render('login');
@@ -28,7 +30,21 @@ router.post('/login', function(req, res) {
 });
 
 router.get('/register', function(req, res) {
-    res.render('register');
+    const MIN_SECURITY_QUESTIONS = 3;
+
+    SecurityQuestionModel.findRandom({}, {}, {limit: MIN_SECURITY_QUESTIONS}, function(err, results) {
+        if (err) {
+            console.error("Error: " + err.toString());
+            res.sendStatus(500);
+            return;
+        }
+
+        let questions = results.map(question => {
+            return {id: question._id, text: question.text};
+        });
+
+        res.render('register', {securityQuestions: questions});
+    });
 });
 
 router.post('/register', function(req, res) {
@@ -38,7 +54,8 @@ router.post('/register', function(req, res) {
     newUser.email = req.body.email;
     newUser.firstname = req.body.firstname;
     newUser.lastname = req.body.lastname;
-    // TODO: security questions
+    newUser.security.question = req.body.securityQuestion;
+    newUser.security.answer = req.body.securityQuestionAnswer;
 
     newUser.save(function(err) {
         if (err) {
