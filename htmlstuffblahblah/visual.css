@@ -1,5 +1,7 @@
 html {
     font-size: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -8,9 +10,10 @@ a {
 }
 
 body {
-    margin: 0 auto;
-    padding: 0 auto;
+    margin: 0;
+    padding: 0;
     width: 100%;
+    height: 100%;
     min-width: 480px;
 }
 
@@ -28,6 +31,7 @@ body {
     position: relative;
     display: inline-block;
     align-items: center;
+    z-index: 1;
 }
 
 .dropdown-content {
@@ -92,11 +96,13 @@ body {
 }
 
 .bar1, .bar2, .bar3 {
+    position: relative;
     width: 27px;
     height: 3px;
     background-color: white;
     margin: 4px;
     transition: 0.2s;
+    z-index: -1;
 }
 
 .footer {
@@ -130,19 +136,4 @@ body {
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
-}
-
-@media only screen and (min-width: 480px) {
-    /* For phones: */
-
-}
-
-@media only screen and (min-width: 600px) {
-    /* For tablets: */
-
-}
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-
 }
