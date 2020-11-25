@@ -4,18 +4,22 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>230</y>
-      <w>210</w>
-      <h>170</h>
+      <x>70</x>
+      <y>360</y>
+      <w>310</w>
+      <h>230</h>
     </coordinates>
     <panel_attributes>User
 --
 + username: String
-+ password: String
++ hash: String
 + email: String
 + firstname: String
 + lastname: String
++ security: {
+	+ question: SecurityQuestion[1]
+	+ answer: String
+}
 + answers: Answer[0..*]
 + questions: Question[0..*]
 --</panel_attributes>
@@ -24,40 +28,40 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>490</y>
+      <x>170</x>
+      <y>680</y>
       <w>210</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>Question
 --
 + text: String
-+ answers: Answer[0..*]
-+ user: User[1]
++ responses: Answer[0..*]
++ postedBy: User[1]
 --</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
-      <y>490</y>
+      <x>470</x>
+      <y>680</y>
       <w>210</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>Answer
 --
 + text: String
-+ question: Question[1]
-+ users: User[0..*]
++ inResponseTo: Question[1]
++ agreedWithBy: User[0..*]
 --</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>390</y>
+      <x>260</x>
+      <y>580</y>
       <w>50</w>
       <h>120</h>
     </coordinates>
@@ -69,8 +73,8 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>310</y>
+      <x>370</x>
+      <y>500</y>
       <w>240</w>
       <h>200</h>
     </coordinates>
@@ -82,8 +86,8 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>530</y>
+      <x>370</x>
+      <y>720</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -91,5 +95,32 @@ m2=0..*</panel_attributes>
 m1=0..*
 m2=1</panel_attributes>
     <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>190</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>SecurityQuestion
+--
++ text: String
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>250</y>
+      <w>40</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
 </diagram>
