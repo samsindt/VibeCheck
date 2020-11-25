@@ -1,0 +1,73 @@
+<div class="row">
+
+    {{#each polls }}
+        <div class="col-md-6">
+            <form onsubmit="vote(event);" id="{{this._id}}">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-arrow-right"></span>{{ this.topic }}
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            {{#each this.choices }}
+                                <li class="list-group-item">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" value="{{@index}}">
+                                            {{ this.value }}
+                                            <div class="alignright" id="vote-count-{{../id}}-{{@index}}">{{ this.votes }}</div>
+                                        </label>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <input type="submit" id="vote-btn-{{this.id}}" class="btn btn-primary btn-sm" value="Vote">
+                    </div>
+                </div>
+            </form>
+        </div>
+    {{/each}}
+</div>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var vote = function (event) {
+        event.preventDefault();
+        var pollId = event.target.id;
+        var choice = event.target.optionsRadios.value;
+        axios.post('/' + pollId + '/vote', {choice: choice, socketId: socketId});
+        document.querySelector('#vote-btn-' + pollId).disabled = true;
+        var voteCount = document.querySelector('#vote-count-' + pollId + '-' + choice);
+        voteCount.textContent++;
+        voteCount.style.color = 'blue';
+        voteCount.style.fontWeight = '900';
+    };
+</script>
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script>
+    var pusher = new Pusher('bf336e291bc9cd9e691a', { cluster: 'us3' });
+    var socketId;
+    // retrieve the socket ID once we're connected
+    pusher.connection.bind('connected', function() {
+        socketId = pusher.connection.socket_id;
+    });
+    pusher.subscribe('poll-events')
+            .bind('vote', function (data) {
+                var pollId = data.pollId;
+                var choice = data.choice;
+                var voteCount = document.querySelector('#vote-count-' + pollId + '-' + choice);
+                voteCount.textContent++;
+                // we'll flash the colour for a moment
+                var color = voteCount.style.color;
+                setTimeout(function () {
+                    voteCount.style.color = color;
+                }, 2000);
+                voteCount.style.color = 'green';
+            });
+</script>

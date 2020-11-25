@@ -7,16 +7,21 @@
     "devserver": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "~5.0.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "express-handlebars": "^5.2.0",
+    "express-hbs": "^2.3.4",
+    "hbs": "^4.1.1",
     "http-errors": "~1.6.3",
+    "jsonwebtoken": "~8.5.1",
+    "mongoose": "^5.10.15",
+    "mongoose-simple-random": "~0.4.1",
     "morgan": "~1.9.1",
     "mustache-express": "~1.3.0",
-    "jsonwebtoken": "~8.5.1",
-    "mongoose": "~5.10.15",
-    "mongoose-simple-random": "~0.4.1",
-    "bcrypt": "~5.0.0"
+    "pusher": "^4.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

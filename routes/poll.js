@@ -2,16 +2,9 @@ var express = require('express');
 var router = express.Router();
 let Poll = require('./../models/poll');
 
-// /* GET home page. */
-// router.get('/', function(req, res) {
-//   res.render('index', { title: 'VibeCheck' });
-// });
-
-
-
-router.get('/', (req, res, next) => {
+router.get('/poll', (req, res, next) => {
   Poll.find().exec((err, polls) => {
-      res.render('index', { polls });
+      res.render('poll', { polls });
   });
 });
 
