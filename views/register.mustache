@@ -29,6 +29,13 @@
                     <input type="text" id="first_name" name="firstname" placeholder="First name" required>
                     <input type="text" id="last_name" name="lastname" placeholder="Last name" required>
                     <input type="email" id="email" name="email" placeholder="Email address" required>
+                    <label for="security_question">Security Question</label>
+                    <select name="securityQuestion" id="security_question">
+                        {{#securityQuestions}}
+                        <option value="{{id}}">{{text}}</option>
+                        {{/securityQuestions}}
+                    </select>
+            <input type="text" id="security_question_answer" name="securityQuestionAnswer" required>
                     <input type="submit">
                 </form>
                 <a href="/account/login">Login</a>
