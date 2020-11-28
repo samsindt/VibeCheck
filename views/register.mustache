@@ -1,19 +1,39 @@
-<html>
+
+
+<!DOCTYPE html>
+<html lang = en>
     <head>
-        <title>Register</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LoginPage</title>
+        <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
-        <form id="registration_form">
-            <legend>Register</legend>
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password" required>
-            <input type="text" id="first_name" name="firstname" placeholder="First name" required>
-            <input type="text" id="last_name" name="lastname" placeholder="Last name" required>
-            <input type="email" id="email" name="email" placeholder="Email address" required>
-            <input type="submit">
-        </form>
-        <a href="/account/login">Login</a>
-        <script type="text/javascript" src="/script/register.js"></script>
+        <div class = "top">
+            <div class = "title-bar">
+                <img src = "../img/VibeCheck_Logo.png" class = "logo">
+                <a href = "http://localhost:3000/">
+                    VibeCheck
+                </a>
+            </div>
+        </div> 
+        <div class = "row">
+            <div class = "column">                                                                                
+                <div class = "sign-in-sign-up heading">
+                    Registration
+                </div>
+                <form id="registration_form">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password" required>
+                    <input type="text" id="first_name" name="firstname" placeholder="First name" required>
+                    <input type="text" id="last_name" name="lastname" placeholder="Last name" required>
+                    <input type="email" id="email" name="email" placeholder="Email address" required>
+                    <input type="submit">
+                </form>
+                <a href="/account/login">Login</a>
+                <script type="text/javascript" src="/script/register.js"></script>
+            </div>
+        </div>
     </body>
 </html>
