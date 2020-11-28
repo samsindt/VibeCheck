@@ -33,3 +33,9 @@ To run the server in production, run `npm start`.
 * `app.js` is the main configuration file for the server. It is where all middleware and routes are set.
 * `package.json` contains all metadata associated with the npm project, including dependencies.
 * `package-lock.json` defines the dependency structure and should not be manually modified.
+
+## Populate Security Questions
+
+For the registration page to work, there must be at least 3 entries in the SecurityQuestions collection. 
+
+To populate the database with initial security questions, run: `node populateSecurityQuestions.js`

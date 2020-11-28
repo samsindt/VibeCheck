@@ -12,6 +12,12 @@ var UserSchema = new mongoose.Schema({
         }, 
      firstname: {type: String, required: true}, 
      lastname: {type: String, required: true},
+     security: {
+         question: {type: mongoose.Schema.Types.ObjectId, ref: 'SecurityQuestion', required: true},
+         answer: {type: String, required: true},
+     },
+     postedQuestions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Question'}],
+     postedAnswers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Answer'}]
 });
 
 UserSchema.methods.setPassword = function(password) {
