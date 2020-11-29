@@ -118,8 +118,11 @@ button {
 .bottom {
   background-color: rgb(41, 41, 41);
   margin: 0 auto;
-  padding: 0 auto;
   display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .bar1, .bar2, .bar3 {
