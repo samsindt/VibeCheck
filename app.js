@@ -45,7 +45,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setup routes
-app.use('/', indexRouter);
+app.use('/account', accountRouter);
 app.use('/', auth.verifyJWTCookie, indexRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
