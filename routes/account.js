@@ -4,10 +4,8 @@ var router = express.Router();
 var UserModel = require('../models/user');
 var SecurityQuestionModel = require('../models/security-question');
 const config = require('../config.json');
-const securityQuestion = require('../models/security-question');
-const app = require('../app');
-const { verifyJWTCookie } = require('../middleware/auth');
-const { db } = require('../models/user');
+
+const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])/;
 
 router.get('/login', function(req, res) {
     res.render('login');
@@ -53,6 +51,14 @@ router.get('/register', function(req, res) {
 router.post('/register', function(req, res) {
     var newUser = new UserModel();
     newUser.username = req.body.username;
+
+    if (passwordRegex.test(req.body.password)) {
+        newUser.setPassword(req.body.password);
+    } else {
+        res.status(422);
+        return res.json({ success: false, invalidPassword: true});
+    }
+    
     newUser.setPassword(req.body.password);
     newUser.email = req.body.email;
     newUser.firstname = req.body.firstname;
@@ -69,7 +75,7 @@ router.post('/register', function(req, res) {
                 return res.json({ success: false, duplicateUser: true});
             }
 
-            return res.json({ success: false, error: err}) // probably should redirect to dedicated error page.
+            return res.json({ success: false, error: err}); // probably should redirect to dedicated error page.
         }
 
         setTokenCookie(res, req.body.username);
