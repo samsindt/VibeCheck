@@ -5,6 +5,9 @@ var UserModel = require('../models/user');
 var SecurityQuestionModel = require('../models/security-question');
 const config = require('../config.json');
 const securityQuestion = require('../models/security-question');
+const app = require('../app');
+const { verifyJWTCookie } = require('../middleware/auth');
+const { db } = require('../models/user');
 
 router.get('/login', function(req, res) {
     res.render('login');
@@ -20,7 +23,7 @@ router.post('/login', function(req, res) {
 
         if (user) {
             // generate jwt and add to cookies, then redirect to home page
-            setTokenCookie(res, req.body.username)
+            setTokenCookie(res, req.body.username);
 
             return res.json({success: true});
         } else {
@@ -78,6 +81,85 @@ router.post('/register', function(req, res) {
 router.post('/logout', function(req, res) {
     res.cookie('token', '', { expires: new Date()});
     res.sendStatus(200);
+});
+
+router.get('/profile', verifyJWTCookie, function(req, res) {
+    UserModel.findOne({id: req.user.id}, function(err, user) {
+        if (err) {
+            return res.status(422).json( {success: false});
+        }
+        if (user) {
+            res.render('profile', {username: user.username, 
+                                   firstname: user.firstname, 
+                                   lastname: user.lastname,
+                                   email: user.email, password: user.password})
+            
+        } else {
+            res.status(401).json( {success: false, invalidCredentials: true});
+        }
+    });
+});
+
+router.post('/profile', verifyJWTCookie, function(req, res) {
+    var updateUser = new UserModel();
+    
+    UserModel.findOne({id: req.user.id}, function(err, user) {
+        if (err) {
+            return res.status(422).json( {success: false});
+        }
+        
+        if (user) {
+            updateUser = user;
+
+            //if a value exists in the profile_form then change the users 
+            //information to match it
+            if (req.body.username) {
+                updateUser.username = req.body.username;
+            }
+            if (req.body.firstname) {
+                updateUser.firstname = req.body.firstname;
+            }
+            if (req.body.lastname) {
+                updateUser.lastname = req.body.lastname;
+            }
+            if (req.body.email) {
+                updateUser.email = req.body.email;
+            }
+            //maybe works, maybe not
+            if (req.body.password) {
+                updateUser.setPassword (req.body.password);
+            }
+           
+            UserModel.findOneAndUpdate({id: req.user.id}, {
+                username: updateUser.username,
+                firstname: updateUser.firstname, 
+                lastname: updateUser.lastname, email: updateUser.email}, 
+                (err, data) => {
+                if (err) {
+                    return res.status(422).json( {success: false});
+                }
+            })
+        } else {
+            res.status(401).json( {success: false, invalidCredentials: true});
+          }
+    });
+
+    updateUser.save(function(err) {
+        if (err) {
+            
+            res.status(422);
+            // check for duplicate username
+            if (err.name === 'MongoError' && err.code === 11000) {
+                return res.json({ success: false, duplicateUser: true});
+            }
+
+            return res.json({ success: false, error: err}) // probably should redirect to dedicated error page.
+        }
+
+        setTokenCookie(res, req.body.username);
+
+        res.json({ success: true});
+    });
 });
 
 function setTokenCookie(res, username) {
