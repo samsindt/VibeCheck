@@ -17,6 +17,7 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account'); 
 var pollRouter = require('./routes/poll');
+//var createPollRouter = require('./routes/createPoll');
 
 // setup database connection
 const mongoose = require('mongoose');
@@ -50,7 +51,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // setup routes
 app.use('/account', accountRouter);
 app.use('/', auth.verifyJWTCookie, indexRouter);
-app.use('/poll', auth.verifyJWTCookie, pollRouter);
+app.use('/poll', pollRouter);
+//app.use('/poll', createPollRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

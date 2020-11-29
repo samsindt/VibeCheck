@@ -1,12 +1,11 @@
 <div class="row">
-
     {{#each polls }}
         <div class="col-md-6">
             <form onsubmit="vote(event);" id="{{this._id}}">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <span class="glyphicon glyphicon-arrow-right"></span>{{ this.topic }}
+                            <span class="glyphicon glyphicon-arrow-left"></span>{{ this.topic }}
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -34,6 +33,7 @@
 </div>
 
 
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     var vote = function (event) {
@@ -44,7 +44,7 @@
         document.querySelector('#vote-btn-' + pollId).disabled = true;
         var voteCount = document.querySelector('#vote-count-' + pollId + '-' + choice);
         voteCount.textContent++;
-        voteCount.style.color = 'blue';
+        voteCount.style.color = 'red';
         voteCount.style.fontWeight = '900';
     };
 </script>
