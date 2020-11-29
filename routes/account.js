@@ -83,16 +83,17 @@ router.post('/logout', function(req, res) {
     res.sendStatus(200);
 });
 
-router.get('/profile', verifyJWTCookie, function(req, res) {
+router.get('/updateProfile', verifyJWTCookie, function(req, res) {
     UserModel.findOne({id: req.user.id}, function(err, user) {
         if (err) {
             return res.status(422).json( {success: false});
         }
         if (user) {
-            res.render('profile', {username: user.username, 
-                                   firstname: user.firstname, 
-                                   lastname: user.lastname,
-                                   email: user.email, password: user.password})
+            res.render('updateProfile', {username: user.username, 
+                                           firstname: user.firstname, 
+                                           lastname: user.lastname,
+                                           email: user.email, 
+                                           password: user.password})
             
         } else {
             res.status(401).json( {success: false, invalidCredentials: true});
@@ -100,7 +101,7 @@ router.get('/profile', verifyJWTCookie, function(req, res) {
     });
 });
 
-router.post('/profile', verifyJWTCookie, function(req, res) {
+router.post('/updateProfile', verifyJWTCookie, function(req, res) {
     var updateUser = new UserModel();
     
     UserModel.findOne({id: req.user.id}, function(err, user) {
@@ -111,7 +112,7 @@ router.post('/profile', verifyJWTCookie, function(req, res) {
         if (user) {
             updateUser = user;
 
-            //if a value exists in the profile_form then change the users 
+            //if a value exists in the updateProfile_form then change the users 
             //information to match it
             if (req.body.username) {
                 updateUser.username = req.body.username;

@@ -6,7 +6,7 @@
     username.setCustomValidity('');
   }
 
-  var form = document.getElementById('profile_form');
+  var form = document.getElementById('updateProfile_form');
 
   form.addEventListener('submit', e => {
       e.preventDefault();
@@ -17,7 +17,7 @@
       formData.forEach((value, key) => rawObj[key] = value);
       var jsonData = JSON.stringify(rawObj);
 
-      fetch('/account/profile', {
+      fetch('/account/updateProfile', {
           method: 'POST',
           credentials: 'include',
           body: jsonData,
