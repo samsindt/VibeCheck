@@ -178,3 +178,37 @@ input {
     width: 100%;
   }
 }
+
+.info {
+  font-family: "Microsoft Yi Baiti";
+  font-size: 20px;
+  border-bottom: 4px dotted #ccc;
+  display: block;
+}
+
+.button-con {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-title {
+  font-family: "Microsoft Yi Baiti";
+  font-size: 28px;
+  justify-content: center;
+  display: flex;
+}
+
+.choosechart {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color:rgb(41, 41, 41);
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  height: 50vh;
+}
