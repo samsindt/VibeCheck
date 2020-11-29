@@ -16,17 +16,21 @@ router.post('/login', function(req, res) {
 
     UserModel.findOne({username: req.body.username}, function(err, user) {
         if (err) {
-            return res.status(422).json( {success: false});
+            return res.status(422).json({success: false});
         }
 
+        // if the username exists
         if (user) {
-            // generate jwt and add to cookies, then redirect to home page
-            setTokenCookie(res, req.body.username)
 
-            return res.json({success: true});
-        } else {
-            res.status(401).json( {success: false, invalidCredentials: true});
+            // if the password is valid
+            if (user.isValidPassword(req.body.password)) {
+                // generate jwt and add to cookies, then redirect to home page
+                setTokenCookie(res, req.body.username)
+                return res.json({success: true});
+            }
         }
+
+        res.status(401).json({success: false, invalidCredentials: true});
     });
 });
 
@@ -49,24 +53,17 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
+    
     var newUser = new UserModel();
     newUser.username = req.body.username;
-
-    if (passwordRegex.test(req.body.password)) {
-        newUser.setPassword(req.body.password);
-    } else {
-        res.status(422);
-        return res.json({ success: false, invalidPassword: true});
-    }
-    
-    newUser.setPassword(req.body.password);
+    newUser.password = req.body.password;
     newUser.email = req.body.email;
     newUser.firstname = req.body.firstname;
     newUser.lastname = req.body.lastname;
     newUser.security.question = req.body.securityQuestion;
     newUser.security.answer = req.body.securityQuestionAnswer;
-
     newUser.save(function(err) {
+        
         if (err) {
             
             res.status(422);
@@ -74,7 +71,7 @@ router.post('/register', function(req, res) {
             if (err.name === 'MongoError' && err.code === 11000) {
                 return res.json({ success: false, duplicateUser: true});
             }
-
+            
             return res.json({ success: false, error: err}); // probably should redirect to dedicated error page.
         }
 
