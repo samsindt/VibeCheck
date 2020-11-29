@@ -102,8 +102,6 @@ router.get('/updateProfile', verifyJWTCookie, function(req, res) {
 });
 
 router.post('/updateProfile', verifyJWTCookie, function(req, res) {
-    var updateUser = new UserModel();
-    
     UserModel.findOne({id: req.user.id}, function(err, user) {
         if (err) {
             return res.status(422).json( {success: false});
@@ -130,7 +128,7 @@ router.post('/updateProfile', verifyJWTCookie, function(req, res) {
             if (req.body.password) {
                 updateUser.setPassword (req.body.password);
             }
-           
+           //user.save 
             UserModel.findOneAndUpdate({id: req.user.id}, {
                 username: updateUser.username,
                 firstname: updateUser.firstname, 
@@ -140,26 +138,7 @@ router.post('/updateProfile', verifyJWTCookie, function(req, res) {
                     return res.status(422).json( {success: false});
                 }
             })
-        } else {
-            res.status(401).json( {success: false, invalidCredentials: true});
-          }
-    });
-
-    updateUser.save(function(err) {
-        if (err) {
-            
-            res.status(422);
-            // check for duplicate username
-            if (err.name === 'MongoError' && err.code === 11000) {
-                return res.json({ success: false, duplicateUser: true});
-            }
-
-            return res.json({ success: false, error: err}) // probably should redirect to dedicated error page.
-        }
-
-        setTokenCookie(res, req.body.username);
-
-        res.json({ success: true});
+        } 
     });
 });
 
