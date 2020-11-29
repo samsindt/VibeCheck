@@ -4,7 +4,7 @@ var router = express.Router();
 var UserModel = require('../models/user');
 var SecurityQuestionModel = require('../models/security-question');
 const config = require('../config.json');
-
+const { verifyJWTCookie } = require('../middleware/auth');
 const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])/;
 
 router.get('/login', function(req, res) {
@@ -134,7 +134,7 @@ router.post('/updateProfile', verifyJWTCookie, function(req, res) {
             if (req.body.password) {
                 updateUser.setPassword (req.body.password);
             }
-           //user.save 
+           //user.save
             UserModel.findOneAndUpdate({id: req.user.id}, {
                 username: updateUser.username,
                 firstname: updateUser.firstname, 
