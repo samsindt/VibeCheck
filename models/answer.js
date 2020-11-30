@@ -6,7 +6,7 @@ var AnswerSchema = new mongoose.Schema({
     agreedWithBy: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 });
 
-UserSchema.methods.getNumAgreements = function(password) {
+AnswerSchema.methods.getNumAgreements = function(password) {
     return this.agreedWithBy.length;
 };
 

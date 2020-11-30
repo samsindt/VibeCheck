@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt');
 
 var UserSchema = new mongoose.Schema({
      username: {type: String, required: true, unique: true},
-     hash: {type: String, required: true},
+     password: {type: String, required: true},
      email: {
          type: String,
          required: true,
@@ -20,13 +20,14 @@ var UserSchema = new mongoose.Schema({
      postedAnswers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Answer'}]
 });
 
-UserSchema.methods.setPassword = function(password) {
+UserSchema.pre('save', function(next) {
     const saltRoundCost = 10;
-    this.hash = bcrypt.hashSync(password, saltRoundCost);
-};
+    this._doc.password = bcrypt.hashSync(this._doc.password, saltRoundCost);
+    next();
+});
 
 UserSchema.methods.isValidPassword = function(password) {
-    return bcrypt.compareSync(password, this.hash);
+    return bcrypt.compareSync(password, this.password);
 };
 
 module.exports = mongoose.model('User', UserSchema);
