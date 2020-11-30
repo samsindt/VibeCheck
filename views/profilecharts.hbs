@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
-    <link href = "visual.css" rel = "stylesheet" type = "text/css">
+    <title>ProfileChartPage</title>
+    <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
 </head>
 <body>
     <div class = "top">
@@ -15,7 +15,6 @@
                 <div class = "bar3"></div>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="./profile.html">Profile</a>
-                    <a href="./madecharts.html">Made By You</a>
                 </div>
             </div>
         </div>
@@ -26,18 +25,17 @@
             </a>
         </div>
     </div>
-    <div>
-        Charts That You've Particpated In
+    <div class = "prof-chart-con">
+        <button type="button" class="choosechart" onclick=document.location='madecharts.html'>Charts You've Made</button>
+        <button type="button" class="choosechart" onclick=document.location='partcharts.html'>Charts You've Participated In</button>
     </div>
     <div class = "bottom">
         <ul>
-            <li class = "footer"><a href="">Something</a></li>
-            <li class = "footer"><a href="">Something</a></li>
-            <li class = "footer"><a href="">Something</a></li>
-            <li class = "footer"><a href="">Something</a></li>
+            <li class = "footer"><a href="./profile.html">Profile</a></li>
         </ul>
     </div>
 </body>
 </html>
 
-<script src = "script.js"></script>
+<script src = "script.js">
+</script>
