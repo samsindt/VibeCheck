@@ -5,8 +5,6 @@ var UserModel = require('../models/user');
 var SecurityQuestionModel = require('../models/security-question');
 const config = require('../config.json');
 
-const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])/;
-
 router.get('/login', function(req, res) {
     res.render('login');
 });

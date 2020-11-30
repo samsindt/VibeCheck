@@ -3,10 +3,10 @@ var SecurityQuestionModel = require('./models/security-question');
 var UserModel = require('./models/user');
 var QuestionModel = require('./models/question');
 var AnswerModel = require('./models/answer');
+
 console.log('Seeding database at ' + config.databaseUrl);
 
 var mongoose = require('mongoose');
-var user = require('./models/user');
 mongoose.connect(config.databaseUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -196,12 +196,3 @@ async function seedDB() {
 }
 
 seedDB();
-
-
-/*SecurityQuestionModel.insertMany(questions, function(err) {
-    if (err) {
-        console.error('Error: ' + err.toString());
-    }
-
-    process.exit();
-});*/
