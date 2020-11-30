@@ -1,9 +1,8 @@
 var express = require('express');
-const jwt = require('jsonwebtoken');
 var router = express.Router();
 var UserModel = require('../models/user');
 var SecurityQuestionModel = require('../models/security-question');
-const config = require('../config.json');
+var auth = require('../helpers/auth');
 
 router.get('/login', function(req, res) {
     res.render('login');
@@ -23,7 +22,7 @@ router.post('/login', function(req, res) {
             // if the password is valid
             if (user.isValidPassword(req.body.password)) {
                 // generate jwt and add to cookies, then redirect to home page
-                setTokenCookie(res, req.body.username)
+                auth.setJWTCookie(res, user.username, user._id);
                 return res.json({success: true});
             }
         }
@@ -73,7 +72,7 @@ router.post('/register', function(req, res) {
             return res.json({ success: false, error: err}); // probably should redirect to dedicated error page.
         }
 
-        setTokenCookie(res, req.body.username);
+        auth.setJWTCookie(res, newUser.username, newUser._id);
 
         res.json({ success: true});
     });
@@ -83,15 +82,5 @@ router.post('/logout', function(req, res) {
     res.cookie('token', '', { expires: new Date()});
     res.sendStatus(200);
 });
-
-function setTokenCookie(res, username) {
-    const expiration = 90000;
-    const token = jwt.sign({username: username}, config.jwtSecretKey);
-    res.cookie('token', token, {
-        expires: new Date(Date.now() + expiration),
-        secure: false,
-        httpOnly: false,
-    });
-}
   
 module.exports = router;
