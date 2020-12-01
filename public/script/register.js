@@ -1,26 +1,17 @@
 (function(){
-    var password = document.getElementById('password');
-    var confirmPassword = document.getElementById('confirm_password');
-    var charAndNumberRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])/;
+    var password = document.getElementById("password");
+    var confirmPassword = document.getElementById("confirm_password");
 
-    function validateConfirmPassword() {
+    function validatePassword() {
         if (password.value != confirmPassword.value) {
-            confirmPassword.setCustomValidity('Passwords do not match');
+            confirmPassword.setCustomValidity("Passwords do not match");
         } else {
             confirmPassword.setCustomValidity("");
         }
     }
 
-    function validatePasswordContents() {
-        if (password.value.length < 8 || !charAndNumberRegex.test(password.value)) {
-            password.setCustomValidity('Password must be at least 8 characters long and contain numbers and letters');
-         } else {
-            password.setCustomValidity('');
-         }
-    }
-
-    password.addEventListener('change',validatePasswordContents);
-    confirmPassword.addEventListener('change', validateConfirmPassword);
+    password.onchange = validatePassword;
+    confirmPassword.onchange = validatePassword;
 
     var username = document.getElementById('username');
 
