@@ -1,12 +1,41 @@
 <html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="/style/style.css">
-  </head>
-  <body>
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
-    <button id="logout">Log Out</button>
-    <script type="text/javascript" src="/script/logout.js"></script>
-  </body>
+    <head>
+        <title>HomePage</title>
+        <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
+    </head>
+<body>
+    <div class = "top">
+        <div class = "dropdown-bar">
+            <div id="dropdown">
+                <div class = "bar1"></div>
+                <div class = "bar2"></div>
+                <div class = "bar3"></div>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="">Your Charts</a>
+                    <a href="">Profile</a>
+                    <a href="">Log In</a>
+                    <a href="">Register</a>
+                    <a id="logout">Log Out</button>
+                    <script type="text/javascript" src="/script/logout.js"></script>
+                </div>
+            </div>
+        </div>
+        <div class = "title-bar">
+            <img src = "/img/VibeCheck_Logo.png" class = "logo">
+            <a href = "http://localhost:3000/">
+                VibeCheck
+            </a>
+        </div>
+    </div>
+    <div class = "bottom">
+        <ul>
+            <li class = "footer"><a href="">Your Charts</a></li>
+            <li class = "footer"><a href="">Profile</a></li>
+            <li class = "footer"><a href="">Log In</a></li>
+            <li class = "footer"><a href="">Register</a></li>
+        </ul>
+    </div>
+</body>
 </html>
+
+<script type = "text/javascript" src = "/script/dropdown.js"></script>
