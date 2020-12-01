@@ -6,7 +6,7 @@
         username.setCustomValidity('');
     }
 
-    form.addEventListener('onclick', e => {
+    form.addEventListener('submit', e => {
         e.preventDefault();
         var formData = new FormData(form);
         // to json
