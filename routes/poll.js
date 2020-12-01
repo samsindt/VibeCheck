@@ -43,12 +43,8 @@ router.post('/create-poll', function(req, res) {
     }
 
     newQuestion.postedBy = user._id;
-    console.log(userPosted);
-});
-  
-  //console.log(userPosted);
-  newQuestion.text = req.body.question;
-  //newQuestion.postedBy = userPosted;
+    newQuestion.text = req.body.question;
+
 
   var answers = [];
 
@@ -84,14 +80,13 @@ router.post('/create-poll', function(req, res) {
 
   newQuestion.save(function(err) {
     if (err) {
-          
-      res.status(422);
       return res.json({ success: false, error: err}); // probably should redirect to dedicated error page.
     }
   res.json({ success: true});
   });
-
-  console.log('end of poll.js');
+});
+  
+  
 });
 
 
