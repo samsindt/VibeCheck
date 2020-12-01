@@ -13,6 +13,7 @@ var viewEngine = require('mustache-express');
 // require routers
 var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account'); 
+var pollRouter = require('./routes/poll');
 
 // setup database connection
 const mongoose = require('mongoose');
@@ -45,6 +46,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setup routes
+app.use('/poll', pollRouter);
 app.use('/account', accountRouter);
 app.use('/', auth.verifyJWTCookie, indexRouter);
 // catch 404 and forward to error handler

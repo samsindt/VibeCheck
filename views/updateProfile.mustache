@@ -1,6 +1,27 @@
 <html>
     <head>
-        <title>UpdateProfile</title>                                                                    
+        <title>UpdateProfile</title>
+        <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
+    </head>
+    <body>
+        <div class = "top">
+            <div class = "dropdown-bar">
+                <div id="dropdown">
+                    <div class = "bar1"></div>
+                    <div class = "bar2"></div>
+                    <div class = "bar3"></div>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="">Profile</a>
+                    </div>
+                </div>
+            </div>
+        <div class = "title-bar">
+            <img src = "/img/VibeCheck_Logo.png" class = "logo">
+                <a href = "http://localhost:3000/">
+                    VibeCheck
+                </a>
+            </div>
+        </div>                                                          
         <div>
             Update Profile for {{username}}
             <form name="updateForm" id="updateProfile_form">
@@ -17,23 +38,16 @@
                     {{/securityQuestions}}
                 </select>
                 <input type="text" id="security_question_answer" name="securityQuestionAnswer" >
-                <input type="submit" value="Update" onclick="printUpdateMsg()">
+                <input type="submit" value="Update" id = "updateMsg">
             </form>
             <script type="text/javascript" src="/script/updateProfile.js"></script>
-            <a href="/">Return Home</a>
+            <div class = "bottom">
+                <ul>
+                    <li class = "footer"><a href="">Profile</a></li>
+                </ul>
+            </div>
         </div>
-
     </body>
 </html>
 
-<script>
-    function printUpdateMsg() {
-        if (updateForm.username.value == '' && updateForm.password.value == '' && updateForm.firstname.value == '' &&
-            updateForm.lastname.value == '' && updateForm.email.value == '' && updateForm.securityQuestionAnswer.value == '') {
-            alert("Please fill out at least one form.");
-        }
-        else {
-            alert("Profile Updated!");
-        }
-    }
-</script>
+<script type = "text/javascript" src="/script/updateMsg.js"></script>

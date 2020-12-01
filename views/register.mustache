@@ -11,6 +11,7 @@
                     <div class = "bar2"></div>
                     <div class = "bar3"></div>
                     <div id="myDropdown" class="dropdown-content">
+                        <a href="">Log In</a>
                         <a href="/account/register">Register</a>
                     </div>
                 </div>
@@ -22,25 +23,23 @@
                 </a>
             </div>
         </div>
-        <div class = "row">
-            <div class = "column">                                                                                
-                <div class = "sign-in-sign-up heading">
-                    Registration
-                </div>
+        <div class = "registrationWrapper"                                                        
+            <div class = "justify">
+                Registration
                 <form id="registration_form">
-                    <input type="text" id="username" name="username" placeholder="Username" required>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                    <input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password" required>
-                    <input type="text" id="first_name" name="firstname" placeholder="First name" required>
-                    <input type="text" id="last_name" name="lastname" placeholder="Last name" required>
-                    <input type="email" id="email" name="email" placeholder="Email address" required>
+                    <div class = "justify"><input type="text" id="username" name="username" placeholder="Username" required></div>
+                    <div class = "justify"><input type="password" id="password" name="password" placeholder="Password" required></div>
+                    <div class = "justify"><input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password" required></div>
+                    <div class = "justify"><input type="text" id="first_name" name="firstname" placeholder="First name" required></div>
+                    <div class = "justify"><input type="text" id="last_name" name="lastname" placeholder="Last name" required></div>
+                    <div class = "justify"><input type="email" id="email" name="email" placeholder="Email address" required></div>
                     <label for="security_question">Security Question</label>
                     <select name="securityQuestion" id="security_question">
                         {{#securityQuestions}}
                         <option value="{{id}}">{{text}}</option>
                         {{/securityQuestions}}
                     </select>
-                    <input type="text" id="security_question_answer" name="securityQuestionAnswer" required>
+                    <div class = "justify"><input type="text" id="security_question_answer" name="securityQuestionAnswer"  placeholder="Enter your answer..." required></div>
                     <input type="submit">
                 </form>
                 <a href="/account/login">Login</a>
@@ -49,8 +48,8 @@
         </div>
         <div class = "bottom">
             <ul>
-                <li class = "footer"><a href="./loginpage.html">Log In</a></li>
-                <li class = "footer"><a href="./registration.html" >Register</a></li>
+                <li class = "footer"><a href="">Log In</a></li>
+                <li class = "footer"><a href="">Register</a></li>
             </ul>
         </div>
     </body>
