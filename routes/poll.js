@@ -3,6 +3,9 @@ var config = require('../config.json');
 var UserModel = require('../models/user');
 var QuestionModel = require('../models/question');
 var AnswerModel = require('../models/answer');
+const { db } = require('../models/user');
+const user = require('../models/user');
+//const user = require('../models/user');
 var router = express.Router();
 
 
@@ -11,22 +14,44 @@ router.get('/create-poll', function(req, res) {
   res.render('createPoll', { title: 'VibeCheck' });
 });
 
+router.get('/charts', function(req, res) {
+  const MIN_SECURITY_QUESTIONS = 3;
+
+  QuestionModel.find({}, {}, {}, function(err, results) {
+      if (err) {
+          console.error("Error: " + err.toString());
+          res.sendStatus(500);
+          return;
+      }
+
+      let questions = results.map(question => {
+          return {id: question._id, text: question.text, responses: question.responses.text};
+      });
+
+      res.render('charts', {questions: questions, title: 'charts'});
+  });
+});
+
 router.post('/create-poll', function(req, res) {
   var newQuestion= new QuestionModel();
+  var userPosted;
+  user.findOne({username: req.user.username}, function(err, user) {
+    if (err) {
+        console.error("Error: " + err.toString());
+        res.sendStatus(500);
+        return;
+    }
+
+    newQuestion.postedBy = user._id;
+    console.log(userPosted);
+});
   
-  console.log(req.body.question);
-  console.log(req.body.choice1);
-  console.log(req.body.choice2);
-  console.log(req.body.choice3);
-  console.log(req.body.choice4);
-  console.log(req.body.choice5);
-  console.log(newQuestion.text);
-  console.log(req.user.username);
-  //mongoose.Types.ObjectId(req.user.userId)
+  //console.log(userPosted);
   newQuestion.text = req.body.question;
-  newQuestion.postedBy = "5fc581f2131e949d944b5a81";
+  //newQuestion.postedBy = userPosted;
 
   var answers = [];
+
   async function insertAnswers() {
   var responses = [
     {text: req.body.choice1,

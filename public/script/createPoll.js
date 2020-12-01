@@ -34,22 +34,5 @@
             console.log('Request failed', error);
           });
       });
-  
-  document.getElementById('addChoice').addEventListener('onclick', addChoice);
-  
-  function addChoice() {
-    var NumberOfOptions = 3
-    NumberOfOptions++;
-  
-    var newChoice = document.createElement('input');
-    var newBreak = document.createElement('br');
-    newChoice.setAttribute('type', 'option' + NumberOfOptions);
-    newChoice.setAttribute('id', 'option' + NumberOfOptions); 
-    newChoice.setAttribute('name', 'option' + NumberOfOptions);
-    console.log(newChoice);
-    
-    document.getElementById('createPoll_form').appendChild(newChoice);
-    document.getElementById('createPoll_form').appendChild(newBreak);
-  
-   }
+
   })();
