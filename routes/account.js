@@ -162,3 +162,23 @@ router.post('/logout', function(req, res) {
 });
   
 module.exports = router;
+
+
+
+router.get('/profile', verifyJWTCookie, function(req, res) {
+    UserModel.findById(req.user.userId, function(err, user) {
+        if (err) {
+            return res.status(422).json( {success: false});
+        }
+        console.log(user);
+        if (user) {
+            res.render('profile', {username: user.username, 
+                                    firstname: user.firstname, 
+                                    lastname: user.lastname,
+                                    email: user.email})
+            
+        } else {
+            res.status(401).json( {success: false, invalidCredentials: true});
+        }
+    });
+});
