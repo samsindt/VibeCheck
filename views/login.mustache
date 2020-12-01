@@ -21,24 +21,36 @@
                     VibeCheck
                 </a>
             </div>
-        </div>                                                   
-        <div class = "sign-in-sign-up heading">
-            Log In
-            <div class = "loginPage"
-                <form id="login_form" class = "loginForm">
-                    <input type="text" id="username" name="username" placeholder="Username" required>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                    <input type="submit" value="Log In">
-                </form>
-            </div>
-            <script type="text/javascript" src="/script/login.js"></script>
-            Need to Register?
-            <div class = "loginPage">
-                <form id = "loginForm" method="get" action="/account/register">
-                    <button type="submit">Register</button>
-                </form>
-            <div class = "loginPage">
         </div>
+        <div class = "indexRow">
+            <div class = "indexColumn">
+                <div class = "centerWrapper">
+                    <div class = "justify sign-in-sign-up heading">
+                        Login
+                    </div>
+                    <div class = "justify">
+                        <form id="login_form" class = "loginForm">
+                            <input type="text" id="username" name="username" placeholder="Username" required>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                            <input type="submit" value="Log In">
+                        </form>
+                        <script type="text/javascript" src="/script/login.js"></script>
+                    </div>
+                </div>
+            </div>
+            <div class = "indexColumn">
+                <div class = "centerWrapper">
+                    <div class = "justify">
+                        Need to Register?
+                    </div>
+                    <div class = "justify">
+                    <form id = "loginForm" method="get" action="/account/register">
+                        <button type="submit">Register</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>                                
         <div class = "bottom">
             <ul>
                 <li class = "footer"><a href="/account/register">Register</a></li>
