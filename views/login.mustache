@@ -29,12 +29,14 @@
                         Login
                     </div>
                     <div class = "justify">
-                        <form id="login_form" class = "loginForm">
+                        <form class = "loginForm">
                             <input type="text" id="username" name="username" placeholder="Username" required>
                             <input type="password" id="password" name="password" placeholder="Password" required>
-                            <input type="submit" value="Log In">
+                            <div class = "justify">
+                                <button type="submit" id = "login_form">Login</button>
+                            </div>
+                            <script type="text/javascript" src="/script/login.js"></script>
                         </form>
-                        <script type="text/javascript" src="/script/login.js"></script>
                     </div>
                 </div>
             </div>
@@ -44,9 +46,13 @@
                         Need to Register?
                     </div>
                     <div class = "justify">
-                    <form id = "loginForm" method="get" action="/account/register">
-                        <button type="submit">Register</button>
-                    </form>
+                        <form id = "loginForm" method="get" action="/account/register">
+                        </form>
+                    </div>
+                    <div class = "justify">
+                        <form method="get" action="/account/register">
+                            <button type="submit">Register</button>
+                        </form>
                     </div>
                 </div>
             </div>

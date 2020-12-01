@@ -23,8 +23,6 @@ input {
   width: 400px;
   font-size: 36px;
   display: flex;
-  margin: 5px 0px;
-  padding: 0;
   height: 64px;
   border-radius: 10px;
   border: 1px solid lightgray;
@@ -178,6 +176,9 @@ input {
   .column {
     width: 100%;
   }
+  .indexColumns {
+    width: 100%;
+  }
 }
 
 .info {
@@ -214,13 +215,28 @@ input {
   height: 50vh;
 }
 
-.loginPage {
-  display: table;
-  width: 100%;
+.indexColumns {
+  display: inline;
+  float: left;
 }
 
-.loginForm  {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
+.indexRow {
+  content: "";
+  clear: both;
+  margin: 0 auto;
+}
+
+.centerWrapper {
+  margin: auto;
+  font-size: 40px;
+  margin: 0 auto;
+  height: 50vh;
+  width: 50vw;
+  min-width: 480px;
+}
+
+.justify {
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
 }
