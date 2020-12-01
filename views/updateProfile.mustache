@@ -38,7 +38,7 @@
                     {{/securityQuestions}}
                 </select>
                 <input type="text" id="security_question_answer" name="securityQuestionAnswer" >
-                <input type="submit" value="Update" onclick="printUpdateMsg()">
+                <input type="submit" value="Update" id = "updateMsg">
             </form>
             <script type="text/javascript" src="/script/updateProfile.js"></script>
             <div class = "bottom">
@@ -50,14 +50,4 @@
     </body>
 </html>
 
-<script>
-    function printUpdateMsg() {
-        if (updateForm.username.value == '' && updateForm.password.value == '' && updateForm.firstname.value == '' &&
-            updateForm.lastname.value == '' && updateForm.email.value == '' && updateForm.securityQuestionAnswer.value == '') {
-            alert("Please fill out at least one form.");
-        }
-        else {
-            alert("Profile Updated!");
-        }
-    }
-</script>
+<script type = "text/javascript" src="/script/updateMsg.js"></script>
