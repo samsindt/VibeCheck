@@ -233,10 +233,26 @@ input {
   height: 50vh;
   width: 50vw;
   min-width: 480px;
+  text-align: center;
 }
 
+.registrationWrapper  {
+  margin: auto;
+  font-size: 40px;
+  margin: 0 auto;
+  height: 50vh;
+  width: 50vw;
+  min-width: 480px;
+  width: 480px;
+  text-align: center;
+}
 .justify {
   justify-content: center;
   display: flex;
   margin: 0 auto;
+}
+
+select {
+  font-size: 20px;
+  width: 400px;
 }
