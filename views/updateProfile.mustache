@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = en>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UpdateProfile</title>                                                                    
+        <div>
+            Update Profile for {{username}}
+            <form name="updateForm" id="updateProfile_form">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <input type="password" id="password" name="password" placeholder="Password">
+                <input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password">
+                <input type="text" id="first_name" name="firstname" placeholder="First name">
+                <input type="text" id="last_name" name="lastname" placeholder="Last name">
+                <input type="email" id="email" name="email" placeholder="Email address">
+                <label for="security_question">Security Question</label>
+                <select name="securityQuestion" id="security_question">
+                    {{#securityQuestions}}
+                    <option value="{{id}}">{{text}}</option>
+                    {{/securityQuestions}}
+                </select>
+                <input type="text" id="security_question_answer" name="securityQuestionAnswer" >
+                <input type="submit" value="Update" onclick="printUpdateMsg()">
+            </form>
+            <script type="text/javascript" src="/script/updateProfile.js"></script>
+            <a href="/">Return Home</a>
+        </div>
+
+    </body>
+</html>
+
+<script>
+    function printUpdateMsg() {
+        if (updateForm.username.value == '' && updateForm.password.value == '' && updateForm.firstname.value == '' &&
+            updateForm.lastname.value == '' && updateForm.email.value == '' && updateForm.securityQuestionAnswer.value == '') {
+            alert("Please fill out at least one form.");
+        }
+        else {
+            alert("Profile Updated!");
+        }
+    }
+</script>
