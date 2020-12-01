@@ -23,7 +23,8 @@ input {
   width: 400px;
   font-size: 36px;
   display: flex;
-  margin: 10px 40%;
+  margin: 5px 0px;
+  padding: 0;
   height: 64px;
   border-radius: 10px;
   border: 1px solid lightgray;
@@ -211,4 +212,15 @@ input {
   cursor: pointer;
   text-align: center;
   height: 50vh;
+}
+
+.loginPage {
+  display: table;
+  width: 100%;
+}
+
+.loginForm  {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
