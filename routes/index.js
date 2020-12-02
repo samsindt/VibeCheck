@@ -24,10 +24,7 @@ router.get('/', function(req, res) {
         }
       );
     });
-
-    // instead of sending json, responsePayload could be used to render a mustache page
-    //res.json(responsePayload);
-    console.log(responsePayload[0]);
+   
     res.render('index', {title: 'VibeCheck', question: responsePayload[0].text});
   })
 });
