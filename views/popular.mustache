@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>HomePage</title>
+        <title>PopularListPage</title>
         <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
     </head>
 <body>
@@ -28,18 +28,11 @@
     <div class = "indexRow">
         <div class = "indexColumn">
           <div class = "centerWrapper">
-            <div class = "justify">Popular Poll</div>
-            <div class = "justify">{{question}}</div>
-            <div class = "justify">{{#pollData}}</div>
-            <div class = "justify">{{text}} : {{numVotes}}</div>
-            <div class = "justify">{{/pollData}}</div>
-            <div class = "justify">Votes Total : {{totalVotes}}</div>
-          </div>
-        </div>
-        <div class = "indexColumn vibe">
-          <div class = "centerWrapper">
-            <div class = "justify">What's the Vibe?</div>
-            <div class = "justify"><button type="submit">Ask Away</button></div>
+            <div class = "justify">Popular Polls Page</div>
+            <ul>
+                <li><a href="" class = "chartLink">How many bananas can you eat in one sitting?</a></li>
+                <li><a href="" class = "chartLink">ADD QUESTIONS HERE</a></li>
+            </ul>
           </div>
         </div>
     </div>
@@ -47,7 +40,6 @@
         <ul>
             <li class = "footer"><a href="">Your Charts</a></li>
             <li class = "footer"><a href="/account/profile">Profile</a></li>
-            <li class = "footer"><a href="/account/updateProfile">Update Profile</a></li>
             <li class = "footer"><a id="logout">Log Out</a></li>
         </ul>
     </div>

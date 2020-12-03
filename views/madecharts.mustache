@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>ProfilePage</title>
+    <title>MadePollsPage</title>
     <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
 </head>
 <body>
@@ -11,9 +11,9 @@
                 <div class = "bar2"></div>
                 <div class = "bar3"></div>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="">Create A Chart</a>
-                    <a href="">Your Charts</a>
-                    <a href="">Update Profile</a>
+                    <a href="">Profile</a>
+                    <a href="">Your Polls</a>
+                    <a href="">Participated In</a>
                     <a id="logout">Log Out</a>
                     <script type="text/javascript" src="/script/logout.js"></script>
                 </div>
@@ -26,30 +26,21 @@
             </a>
         </div>
     </div>
-    <h1 class = "profile-title">Profile</h1>
-    <div class = "profile-info">
-        <div class = "info">
-            First Name
+    <div class = "indexColumn">
+        <div class = "centerWrapper">
+            <div class = "justify">This is a poll you made..."</div>
+            <div class = "justify">INSERT POLL {{question}}</div>
+            <div class = "justify">INSERT {{#pollData}}</div>
+            <div class = "justify">INSERT {{text}} : {{numVotes}}</div>
+            <div class = "justify">INSERT {{/pollData}}</div>
+            <div class = "justify">INSERT Votes Total : {{totalVotes}}</div>
         </div>
-        {{firstname}}
-        <div class = "info">
-            Last Name
-        </div>
-        {{lastname}}
-        <div class = "info">
-            Username
-        </div>
-        {{username}}
-        <div class = "info">
-            E-mail
-        </div>
-        {{email}}
-    </div>
+      </div>
     <div class = "bottom">
         <ul>
-            <li class = "footer"><a href="">Create A Chart</a></li>
+            <li class = "footer"><a href="/account/profile">Profile</a></li>
             <li class = "footer"><a href="">Your Charts</a></li>
-            <li class = "footer"><a href="">Update Profile</a></li>
+            <li class = "footer"><a href="">Polls You Participated In</a></li>
             <li class = "footer"><a id="logout">Log Out</a></li>
         </ul>
     </div>
