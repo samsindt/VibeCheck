@@ -42,7 +42,7 @@ router.get('/', function(req, res) {
             });
             ++i;
           }
-          console.log (poll.docs);
+          
           res.render('index', {title: 'VibeCheck',
                       totalVotes: responsePayload[0].numResponses,
                       question: responsePayload[0].text, 
