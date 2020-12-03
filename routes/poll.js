@@ -1,5 +1,4 @@
 var express = require('express');
-const { response } = require('../app');
 var QuestionModel = require('../models/question');
 var AnswerModel = require('../models/answer');
 const user = require('../models/user');
@@ -45,7 +44,7 @@ router.post('/create', function(req, res) {
     }, 
   ];
   
-
+  
   for (response of responses) {
     var newAnswer = new AnswerModel(response);
     newAnswer.save();
@@ -92,5 +91,40 @@ router.get('/popular', function(req, res) {
     res.json(responsePayload);
   })
 });
+
+router.get('/id/:id', function(req, res) {
+  QuestionModel.findById(req.params.id, function(err, question) {
+    // if the name is not a valid id hex string, a CastError will occur
+    if ((err && err.name === 'CastError') || !question) {
+      return res.sendStatus(404);
+    } 
+
+    if (err) {
+      return res.sendStatus(500);
+    }
+
+    res.render('poll', {title: question.text});
+  });
+});
+
+router.get('/populate/:id', function(req, res) {
+  QuestionModel.findById(req.params.id).populate('responses').exec(function(err, question) {
+    // if the name is not a valid id hex string, a CastError will occur
+    if ((err && err.name === 'CastError') || !question) {
+      return res.sendStatus(404);
+    } 
+
+    if (err) {
+      return res.sendStatus(500);
+    }
+    console.log("test")
+    var labels = question.responses.map(r => r.text);
+    var counts = question.responses.map(r => r.responseCount);
+
+    var obj = {labels: labels, counts: counts};
+    console.log(obj);
+    res.json(obj);
+  });
+})
 
 module.exports = router;
