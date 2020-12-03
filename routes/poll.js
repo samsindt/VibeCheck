@@ -1,10 +1,7 @@
 var express = require('express');
-var config = require('../config.json');
 const { response } = require('../app');
-var UserModel = require('../models/user');
 var QuestionModel = require('../models/question');
 var AnswerModel = require('../models/answer');
-const { db } = require('../models/user');
 const user = require('../models/user');
 var router = express.Router();
 
