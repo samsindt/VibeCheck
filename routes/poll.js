@@ -103,8 +103,28 @@ router.get('/id/:id', function(req, res) {
       return res.sendStatus(500);
     }
 
-    res.render('poll', {id: question._id, text: question.title});
+    res.render('poll', {title: question.text});
   });
 });
+
+router.get('/populate/:id', function(req, res) {
+  QuestionModel.findById(req.params.id).populate('responses').exec(function(err, question) {
+    // if the name is not a valid id hex string, a CastError will occur
+    if ((err && err.name === 'CastError') || !question) {
+      return res.sendStatus(404);
+    } 
+
+    if (err) {
+      return res.sendStatus(500);
+    }
+    console.log("test")
+    var labels = question.responses.map(r => r.text);
+    var counts = question.responses.map(r => r.responseCount);
+
+    var obj = {labels: labels, counts: counts};
+    console.log(obj);
+    res.json(obj);
+  });
+})
 
 module.exports = router;
