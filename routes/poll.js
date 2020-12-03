@@ -1,5 +1,4 @@
 var express = require('express');
-const { response } = require('../app');
 var QuestionModel = require('../models/question');
 var AnswerModel = require('../models/answer');
 const user = require('../models/user');
@@ -45,7 +44,7 @@ router.post('/create', function(req, res) {
     }, 
   ];
   
-
+  
   for (response of responses) {
     var newAnswer = new AnswerModel(response);
     newAnswer.save();
@@ -95,12 +94,13 @@ router.get('/popular', function(req, res) {
 
 router.get('/id/:id', function(req, res) {
   QuestionModel.findById(req.params.id, function(err, question) {
-    if (err) {
-      return res.sendStatus(500);
+    // if the name is not a valid id hex string, a CastError will occur
+    if ((err && err.name === 'CastError') || !question) {
+      return res.sendStatus(404);
     } 
 
-    if (!question) {
-      return res.sendStatus(404);
+    if (err) {
+      return res.sendStatus(500);
     }
 
     res.render('poll', {id: question._id, text: question.title});
