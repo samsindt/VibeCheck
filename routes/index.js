@@ -27,24 +27,18 @@ router.get('/', function(req, res) {
     });
     
     QuestionModel.findById(responsePayload[0].id, function (err, questionTitle) {
-      
       AnswerModel.findById(questionTitle.responses[0], function (err, answer){
-        console.log(answer.inResponseTo);
-        AnswerModel.findById("5fc45e1e3cb7d7338c6e2303").populate('agreedWithBy').exec(function(err, docs) {
-        if (err) {
-          console.error("Error finding all polls by popularity: " + err);
-          return res.sendStatus(500);
-        }
-
-        console.log (docs);
-
+        AnswerModel.find({inResponseTo: answer.inResponseTo}).populate(
+                          'agreedWithBy').exec(function(err, docs) {
+          if (err) {
+            console.error("Error finding all polls by popularity: " + err);
+            return res.sendStatus(500);
+          }
+          res.render('index', {title: 'VibeCheck', 
+                      question: responsePayload[0].text, answers: docs});
+        })
       })
-
-      })
-
-    res.render('index', {title: 'VibeCheck', question: responsePayload[0].text});
     });
-    
   })
 });
 

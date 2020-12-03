@@ -30,7 +30,9 @@
           <div class = "centerWrapper">
             <div class = "justify">Popular Poll</div>
             <div class = "justify">{{question}}</div>
-            <div class = "justify">Some Other stuff</div>
+            <div class = "justify">{{#answers}}
+                                    {{text}}
+                                    {{/answers}}</div>
           </div>
         </div>
         <div class = "indexColumn">
