@@ -5,6 +5,13 @@
     <body>
         <h1>{{title}}</h1>
         <canvas id="chart"></canvas>
+        <form id="vote_form">
+         {{#responses}}
+            <input type="radio" id="{{id}}" name="vote" value="{{id}}">
+            <label for="{{id}}">{{text}}</label>
+         {{/responses}}
+            <input type="submit" value="Vote">
+        </form>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="/script/poll.js"></script>
     </body>

@@ -1,6 +1,7 @@
 var express = require('express');
 var QuestionModel = require('../models/question');
 var AnswerModel = require('../models/answer');
+var UserModel = require('../models/user');
 const user = require('../models/user');
 var router = express.Router();
 
@@ -93,7 +94,7 @@ router.get('/popular', function(req, res) {
 });
 
 router.get('/id/:id', function(req, res) {
-  QuestionModel.findById(req.params.id, function(err, question) {
+  QuestionModel.findById(req.params.id).populate('responses').exec(function(err, question) {
     // if the name is not a valid id hex string, a CastError will occur
     if ((err && err.name === 'CastError') || !question) {
       return res.sendStatus(404);
@@ -103,7 +104,9 @@ router.get('/id/:id', function(req, res) {
       return res.sendStatus(500);
     }
 
-    res.render('poll', {title: question.text});
+    var responses = question.responses.map(r => {return {text: r.text, id: r._id}; });
+
+    res.render('poll', {title: question.text, responses: responses});
   });
 });
 
@@ -117,14 +120,54 @@ router.get('/populate/:id', function(req, res) {
     if (err) {
       return res.sendStatus(500);
     }
-    console.log("test")
+
     var labels = question.responses.map(r => r.text);
     var counts = question.responses.map(r => r.responseCount);
 
-    var obj = {labels: labels, counts: counts};
-    console.log(obj);
-    res.json(obj);
+    res.json({labels: labels, counts: counts});
   });
-})
+});
+
+router.post('/vote', function(req, res) {
+    AnswerModel.findById(req.body.vote, function(err, answer) {
+      if ((err && err.name === 'CastError') || !answer) {
+        return res.sendStatus(404);
+      } 
+  
+      if (err) {
+        console.error(err.toString());
+        return res.sendStatus(500);
+      }
+
+      UserModel.findById(req.user.userId, function(err, user) {
+        if ((err && err.name === 'CastError') || !user) {
+          return res.sendStatus(404);
+        } 
+    
+        if (err) {
+          console.error(err.toString());
+          return res.sendStatus(500);
+        }
+
+        answer.agreedWithBy.push(user);
+        answer.save(function(err) {
+          if (err) {
+            console.error(err.toString());
+            return res.sendStatus(500);
+          }
+
+          user.postedAnswers.push(answer);
+          user.save(function(err) {
+            if (err) {
+              console.error(err.toString());
+              return res.sendStatus(500);
+            }
+
+            res.status(200).end();
+          });
+        });
+      });
+    });
+});
 
 module.exports = router;
