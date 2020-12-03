@@ -14,23 +14,6 @@ router.get('/create-poll', function(req, res) {
   res.render('createPoll', { title: 'VibeCheck' });
 });
 
-router.get('/charts', function(req, res) {
-
-  QuestionModel.find({}, {}, {}, function(err, results) {
-      if (err) {
-          console.error("Error: " + err.toString());
-          res.sendStatus(500);
-          return;
-      }
-
-      let questions = results.map(question => {
-          return {id: question._id, text: question.text, responses: question.responses.text};
-      });
-
-      res.render('charts', {questions: questions, title: 'charts'});
-  });
-});
-
 router.post('/create-poll', function(req, res) {
   var newQuestion= new QuestionModel();
   user.findOne({username: req.user.username}, function(err, user) {
