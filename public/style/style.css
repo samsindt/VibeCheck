@@ -252,7 +252,25 @@ input {
   margin: 0 auto;
 }
 
+.float-left {
+  justify-content: left;
+  display: flex;
+  margin: 0 auto;
+}
+
 select {
   font-size: 20px;
   width: 400px;
+}
+
+.vibe {
+  margin: 30px 0px 0px 0px;
+}
+
+.poll {
+  text-align: center;
+}
+
+.poll-answer {
+  display: inline-block;
 }
