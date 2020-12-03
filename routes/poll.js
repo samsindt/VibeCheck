@@ -1,5 +1,4 @@
 var express = require('express');
-const { response } = require('../app');
 var QuestionModel = require('../models/question');
 var AnswerModel = require('../models/answer');
 const user = require('../models/user');

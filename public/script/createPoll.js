@@ -12,7 +12,7 @@
           formData.forEach((value, key) => rawObj[key] = value);
           var jsonData = JSON.stringify(rawObj);
   
-          fetch('/poll/create', {
+          fetch('/create', {
               method: 'POST',
               credentials: 'include',
               body: jsonData,
@@ -24,7 +24,7 @@
 
           .then(data => {
               if (data.success) {
-                
+                window.location.href = '/';
               }
               else {
                 alert('Error: ' + response.msg);

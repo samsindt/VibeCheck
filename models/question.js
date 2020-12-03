@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-const { response } = require('../app');
 
 var QuestionSchema = new mongoose.Schema({
     text: {type: String, required:true},
