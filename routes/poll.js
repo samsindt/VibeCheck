@@ -1,11 +1,7 @@
 var express = require('express');
-<<<<<<< HEAD
-var router = express.Router();
-=======
 var config = require('../config.json');
 const { response } = require('../app');
 var UserModel = require('../models/user');
->>>>>>> master
 var QuestionModel = require('../models/question');
 var AnswerModel = require('../models/answer');
 const { db } = require('../models/user');
