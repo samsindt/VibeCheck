@@ -30,16 +30,29 @@ router.get('/', function(req, res) {
       AnswerModel.findById(questionTitle.responses[0], function (err, answer){
         AnswerModel.find({inResponseTo: answer.inResponseTo}).populate(
                           'agreedWithBy').exec(function(err, docs) {
+          var poll = {docs: []};
+          var i = 0;
+
           if (err) {
             console.error("Error finding all polls by popularity: " + err);
             return res.sendStatus(500);
           }
-          res.render('index', {title: 'VibeCheck', 
-                      question: responsePayload[0].text, answers: docs});
-        })
-      })
+          while (docs[i]){
+            poll.docs.push({
+              text: docs[i].text,
+              numVotes: docs[i].agreedWithBy.length
+            });
+            ++i;
+          }
+          console.log (poll.docs);
+          res.render('index', {title: 'VibeCheck',
+                      totalVotes: responsePayload[0].numResponses,
+                      question: responsePayload[0].text, 
+                      pollData: poll.docs});
+        });
+      });
     });
-  })
+  });
 });
 
 module.exports = router;
