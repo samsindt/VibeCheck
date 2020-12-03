@@ -274,3 +274,7 @@ select {
 .poll-answer {
   display: inline-block;
 }
+
+.chartLink {
+  color: gray;
+}
