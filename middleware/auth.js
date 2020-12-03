@@ -11,6 +11,7 @@ module.exports = {
             const decrypt = jwt.verify(token, config.jwtSecretKey);
             req.user = {
                 username: decrypt.username,
+                userId: decrypt.userId
             };
     
             next();

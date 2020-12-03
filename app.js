@@ -46,6 +46,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setup routes
+app.use('/poll', pollRouter);
 app.use('/account', accountRouter);
 app.use('/', auth.verifyJWTCookie, indexRouter);
 app.use('/', auth.verifyJWTCookie, pollRouter);

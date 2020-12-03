@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>UpdateProfile</title>
+        <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
+    </head>
+    <body>
+        <div class = "top">
+            <div class = "dropdown-bar">
+                <div id="dropdown">
+                    <div class = "bar1"></div>
+                    <div class = "bar2"></div>
+                    <div class = "bar3"></div>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="">Profile</a>
+                    </div>
+                </div>
+            </div>
+        <div class = "title-bar">
+            <img src = "/img/VibeCheck_Logo.png" class = "logo">
+                <a href = "http://localhost:3000/">
+                    VibeCheck
+                </a>
+            </div>
+        </div>                                                          
+        <div>
+            Update Profile for {{username}}
+            <form name="updateForm" id="updateProfile_form">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <input type="password" id="password" name="password" placeholder="Password">
+                <input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password">
+                <input type="text" id="first_name" name="firstname" placeholder="First name">
+                <input type="text" id="last_name" name="lastname" placeholder="Last name">
+                <input type="email" id="email" name="email" placeholder="Email address">
+                <label for="security_question">Security Question</label>
+                <select name="securityQuestion" id="security_question">
+                    {{#securityQuestions}}
+                    <option value="{{id}}">{{text}}</option>
+                    {{/securityQuestions}}
+                </select>
+                <input type="text" id="security_question_answer" name="securityQuestionAnswer" >
+                <input type="submit" value="Update" id = "updateMsg">
+            </form>
+            <script type="text/javascript" src="/script/updateProfile.js"></script>
+            <div class = "bottom">
+                <ul>
+                    <li class = "footer"><a href="">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script type = "text/javascript" src="/script/updateMsg.js"></script>

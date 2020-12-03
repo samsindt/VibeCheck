@@ -6,8 +6,8 @@ var AnswerSchema = new mongoose.Schema({
     agreedWithBy: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 });
 
-AnswerSchema.methods.getNumAgreements = function(password) {
+AnswerSchema.virtual('responseCount').get(function() {
     return this.agreedWithBy.length;
-};
+})
 
 module.exports = mongoose.model('Answer', AnswerSchema);
