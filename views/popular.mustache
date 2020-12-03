@@ -1,40 +1,46 @@
 <html>
     <head>
-        <title>RegisterPage</title>
-        <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
+        <title>PopularListPage</title>
+        <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
     </head>
-    <body>
-        <div class = "top">
-            <div class = "dropdown-bar">
-                <div id="dropdown">
-                    <div class = "bar1"></div>
-                    <div class = "bar2"></div>
-                    <div class = "bar3"></div>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="">Log In</a>
-                        <a href="/account/register">Register</a>
-                    </div>
+<body>
+    <div class = "top">
+        <div class = "dropdown-bar">
+            <div id="dropdown">
+                <div class = "bar1"></div>
+                <div class = "bar2"></div>
+                <div class = "bar3"></div>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="">Your Charts</a>
+                    <a href="/account/profile">Profile</a>
+                    <a id="logout">Log Out</button>
+                    <script type="text/javascript" src="/script/logout.js"></script>
                 </div>
             </div>
+        </div>
         <div class = "title-bar">
             <img src = "/img/VibeCheck_Logo.png" class = "logo">
-                <a href = "http://localhost:3000/">
-                    VibeCheck
-                </a>
-            </div>
+            <a href = "http://localhost:3000/">
+                VibeCheck
+            </a>
         </div>
-        <div class = "registrationWrapper"                                                        
-            <div class = "justify">
-                Popular Poll Page
-                <div class = "justify"
-            </div>
-        </div>
-        <div class = "bottom">
+    </div>
+    <div class = "indexRow">
+        <div class = "indexColumn">
+          <div class = "centerWrapper">
+            <div class = "justify">Popular Polls Page</div>
             <ul>
-                <li class = "footer"><a href="">Log In</a></li>
-                <li class = "footer"><a href="">Register</a></li>
+                <li><a href="" class = "chartLink">How many bananas can you eat in one sitting?</a></li>
             </ul>
+          </div>
         </div>
-    </body>
+    </div>
+    <div class = "bottom">
+        <ul>
+            <li class = "footer"><a href="">Your Charts</a></li>
+            <li class = "footer"><a href="/account/profile">Profile</a></li>
+            <li class = "footer"><a id="logout">Log Out</li>
+        </ul>
+    </div>
+</body>
 </html>
-<script type = "text/javascript" src = "/script/dropdown.js"></script>
