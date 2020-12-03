@@ -30,4 +30,18 @@ router.get('/popular', function(req, res) {
   })
 });
 
+router.get('/id/:id', function(req, res) {
+  QuestionModel.findById(req.params.id, function(err, question) {
+    if (err) {
+      return res.sendStatus(500);
+    } 
+
+    if (!question) {
+      return res.sendStatus(404);
+    }
+
+    res.render('poll', {id: question._id, text: question.title});
+  });
+});
+
 module.exports = router;
