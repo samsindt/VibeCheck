@@ -24,7 +24,7 @@
 
           .then(data => {
               if (data.success) {
-                console.log('form sent');
+                
               }
               else {
                 alert('Error: ' + response.msg);

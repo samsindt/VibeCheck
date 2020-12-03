@@ -15,7 +15,6 @@ router.get('/create-poll', function(req, res) {
 });
 
 router.get('/charts', function(req, res) {
-  const MIN_SECURITY_QUESTIONS = 3;
 
   QuestionModel.find({}, {}, {}, function(err, results) {
       if (err) {
@@ -34,7 +33,6 @@ router.get('/charts', function(req, res) {
 
 router.post('/create-poll', function(req, res) {
   var newQuestion= new QuestionModel();
-  var userPosted;
   user.findOne({username: req.user.username}, function(err, user) {
     if (err) {
         console.error("Error: " + err.toString());
