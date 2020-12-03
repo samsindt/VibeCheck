@@ -10,11 +10,11 @@ var router = express.Router();
 
 
 /* GET create page. */
-router.get('/create-poll', function(req, res) {
+router.get('/create', function(req, res) {
   res.render('createPoll', { title: 'VibeCheck' });
 });
 
-router.post('/create-poll', function(req, res) {
+router.post('/create', function(req, res) {
   var newQuestion= new QuestionModel();
   user.findOne({username: req.user.username}, function(err, user) {
     if (err) {

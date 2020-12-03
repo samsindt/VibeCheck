@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // setup routes
 app.use('/account', accountRouter);
 app.use('/', auth.verifyJWTCookie, indexRouter);
-app.use('/poll', auth.verifyJWTCookie, pollRouter);
+app.use('/', auth.verifyJWTCookie, pollRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
