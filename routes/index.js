@@ -1,9 +1,7 @@
 var express = require('express');
-const { response } = require('../app');
 var router = express.Router();
 var QuestionModel = require('../models/question');
 var AnswerModel = require('../models/answer');
-const { findByIdAndUpdate } = require('../models/question');
 
 router.get('/', function(req, res) {
   QuestionModel.find().populate('responses').exec(function(err, docs) {
