@@ -9,6 +9,7 @@
         var newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('placeholder', 'Add a possible answer');
+        newInput.required = true;
         inputCount++;
         newInput.setAttribute('name', inputCount);
         newDiv.appendChild(newInput);
