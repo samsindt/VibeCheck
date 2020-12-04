@@ -1,18 +1,61 @@
 <html>
     <head>
         <title>{{title}}</title>
+        <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
-        <h1>{{title}}</h1>
-        <canvas id="chart"></canvas>
-        <form id="vote_form">
-         {{#responses}}
-            <input type="radio" id="{{id}}" name="vote" value="{{id}}">
-            <label for="{{id}}">{{text}}</label>
-         {{/responses}}
-            <input type="submit" value="Vote">
-        </form>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="/script/poll.js"></script>
+        <div class = "top">
+            <div class = "dropdown-bar">
+                <div id="dropdown">
+                    <div class = "bar1"></div>
+                    <div class = "bar2"></div>
+                    <div class = "bar3"></div>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="">Your Charts</a>
+                        <a href="/account/profile">Profile</a>
+                        <a id="logout">Log Out</a>
+                        <script type="text/javascript" src="/script/logout.js"></script>
+                    </div>
+                </div>
+            </div>
+            <div class = "title-bar">
+                <img src = "/img/VibeCheck_Logo.png" class = "logo">
+                <a href = "http://localhost:3000/">
+                    VibeCheck
+                </a>
+            </div>
+        </div>
+
+        <div class = "indexRow">
+            <div class = "indexColumn">
+                <div class = "centerWrapper">
+                    <div class = "justify"> {{title}}</div>
+                    <div class = "justify">       
+                        <canvas id="chart"></canvas> 
+                        <form id="vote_form">
+                                {{#responses}}
+                                    <input type="radio" id="{{id}}" name="vote" value="{{id}}">
+                                <div class = "justify">
+                                    <label for="{{id}}">{{text}}</label>
+                                </div>
+                                {{/responses}}
+                                <input type="submit" value="Vote">
+                        </form>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                        <script src="/script/poll.js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "bottom">
+            <ul>
+                <li class = "footer"><a href="">Your Charts</a> | </li>
+                <li class = "footer"><a href="/account/profile">Profile</a> | </li>
+                <li class = "footer"><a href="/account/updateProfile">Update Profile</a> | </li>
+                <li class = "footer"><a id="logout">Log Out</a></li>
+            </ul>
+        </div>
     </body>
 </html>
+
+<script type = "text/javascript" src = "/script/dropdown.js"></script>
