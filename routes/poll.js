@@ -20,51 +20,52 @@ router.post('/create', function(req, res) {
         return;
     }
 
-    newQuestion.postedBy = user._id;
+    newQuestion.postedBy = user;
     newQuestion.text = req.body.question;
 
+    var answers = [];
 
-  var answers = [];
+    req.body.answers.forEach(a => {
+      var newAnswer = new AnswerModel();
+      newAnswer.text = a;
+      newAnswer.inResponseTo = newQuestion;
+      answers.push(newAnswer);
+      newQuestion.responses.push(newAnswer);
+    });
 
-  async function insertAnswers() {
-  var responses = [
-    {text: req.body.choice1,
-      inResponseTo: newQuestion
-    }, 
-    {text: req.body.choice2,
-      inResponseTo: newQuestion
-    },
-    {text: req.body.choice3,
-      inResponseTo: newQuestion
-    }, 
-    {text: req.body.choice4,
-      inResponseTo: newQuestion
-    }, 
-    {text: req.body.choice5,
-      inResponseTo: newQuestion
-    }, 
-  ];
-  
-  
-  for (response of responses) {
-    var newAnswer = new AnswerModel(response);
-    newAnswer.save();
-    newAnswer.inResponseTo.responses.push(newAnswer);
-    await newAnswer.inResponseTo.save();
-    answers.push();
+    user.save(function(err) {
+      if (err) {
+        console.error("Error: " + err.toString());
+        res.sendStatus(500);
+        return;
+      }
+
+      newQuestion.save(function(err) {
+        if (err) {
+          console.error("Error: " + err.toString());
+          res.sendStatus(500);
+          return;
+        }
+
+        saveAnswers(null);
+      })
+    });
+
+    function saveAnswers(err) {
+      if (err) {
+        console.log("error");
+        console.error("Error: " + err.toString());
+        res.sendStatus(500);
+        return;
+      }
+
+      if (0 < answers.length) {
+        answers.pop().save(saveAnswers);
+      } else {
+        res.json({success: true, id: newQuestion._id});
+      }
     }
-  }
-  insertAnswers();
-
-  newQuestion.save(function(err) {
-    if (err) {
-      return res.json({ success: false, error: err}); 
-    }
-  res.json({ success: true});
   });
-});
-  
-  
 });
 
 router.get('/popular', function(req, res) {

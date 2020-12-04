@@ -1,53 +1,29 @@
 <html>
     <head>
-        <title>CreatePollPage</title>
+        <title>Create Poll</title>
         <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
+        <link href="../style/header.css" rel="stylesheet" type="text/css">
+        <link href="../style/footer.css" rel='stylesheet' type="text/css">
     </head>
 <body>
-    <div class = "top">
-        <div class = "dropdown-bar">
-            <div id="dropdown">
-                <div class = "bar1"></div>
-                <div class = "bar2"></div>
-                <div class = "bar3"></div>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="">Your Charts</a>
-                    <a href="/account/profile">Profile</a>
-                    <a id="logout">Log Out</button>
-                    <script type="text/javascript" src="/script/logout.js"></script>
-                </div>
-            </div>
-        </div>
-        <div class = "title-bar">
-            <img src = "/img/VibeCheck_Logo.png" class = "logo">
-            <a href = "http://localhost:3000/">
-                VibeCheck
-            </a>
-        </div>
-    </div>
+   {{>loggedInHeader}}
     <div class = "indexRow">
         <div class = "indexColumn">
           <div class = "centerWrapper">
             <div class = "justify">Create a Poll</div>
                 <form id="createPoll_form">
-                    <div class = "justify"><input type="text"></div>
-                    <div class = "justify"><input type="text"></div>
                     <input type="submit">
+                    <div class = "justify"><input name="question" type="text" placeholder="Ask a questin" required></div>
+                    <div class = "justify"><input name="1" type="text" placeholder="Add a possible answer" required></div>
+                    <div class = "justify"><input name="2" type="text" placeholder="Add a possible answer" required></div>
                 </form>
                 <button id="addAnswer">Add Answer</button>
                 <script type="text/javascript" src="/script/createPoll.js"></script>
-                <script type="text/javscript" src="/script/addAnswer.js"></script>
+                <script type="text/javascript" src="/script/addAnswer.js"></script>
           </div>
         </div>
     </div>
-    <div class = "bottom">
-        <ul>
-            <li class = "footer"><a href="">Your Charts</a> | </li>
-            <li class = "footer"><a href="/account/profile">Profile</a> | </li>
-            <li class = "footer"><a id="logout">Log Out</li>
-        </ul>
-    </div>
+    {{>footer}}
 </body>
 </html>
 
-<script type = "text/javascript" src = "/script/dropdown.js"></script>

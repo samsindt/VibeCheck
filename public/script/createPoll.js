@@ -6,13 +6,15 @@
       form.addEventListener('submit', e => {
           e.preventDefault();
           var formData = new FormData(form);
-          // to json
-  
-          var rawObj = {};
-          formData.forEach((value, key) => rawObj[key] = value);
-          var jsonData = JSON.stringify(rawObj);
-  
-          fetch('/create', {
+          var jsonObj = {
+            question: formData.get('question'),
+            answers: []
+          };
+          
+          formData.delete('question');
+          formData.forEach((value, key) => jsonObj.answers.push(value));
+          var jsonData = JSON.stringify(jsonObj);
+          fetch('/poll/create', {
               method: 'POST',
               credentials: 'include',
               body: jsonData,
@@ -21,10 +23,9 @@
               },
           })
           .then(response => response.json())
-
           .then(data => {
               if (data.success) {
-                window.location.href = '/';
+                window.location.href = '/poll/id/'+data.id;
               }
               else {
                 alert('Error: ' + response.msg);
@@ -34,5 +35,4 @@
             console.log('Request failed', error);
           });
       });
-
   })();
