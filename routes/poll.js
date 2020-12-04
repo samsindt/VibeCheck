@@ -94,13 +94,7 @@ router.get('/popular', function(req, res) {
 
 router.get('/your-questions', function(req, res) {
   UserModel.findById(req.user.userId).populate('postedQuestions').exec(function(err, user) {
-    if ((err && err.name === 'CastError') || !user) {
-      return res.sendStatus(404);
-    } 
-
-    if (err) {
-      return res.sendStatus(500);
-    }
+    if (hasErrorIdError(res, err, user)) return; 
 
     var charts = user.postedQuestions.map(q => {
       return {text: q.text, id: q._id};
@@ -112,13 +106,7 @@ router.get('/your-questions', function(req, res) {
 
 router.get('/your-answers', function(req, res) {
   UserModel.findById(req.user.userId).populate({path:'postedAnswers', populate: {path: 'inResponseTo'}}).exec(function(err, user) {
-    if ((err && err.name === 'CastError') || !user) {
-      return res.sendStatus(404);
-    } 
-
-    if (err) {
-      return res.sendStatus(500);
-    }
+    if (hasErrorIdError(res, err, user)) return; 
 
     var charts = user.postedAnswers.map(a => {
       console.log(a.inResponseTo);
@@ -132,15 +120,7 @@ router.get('/your-answers', function(req, res) {
 router.get('/id/:id', function(req, res) {
   QuestionModel.findById(req.params.id).populate('responses').exec(function(err, question) {
     
-    // if the name is not a valid id hex string, a CastError will occur
-    if ((err && err.name === 'CastError') || !question) {
-      console.log(req.params.id)
-      return res.sendStatus(404);
-    } 
-
-    if (err) {
-      return res.sendStatus(500);
-    }
+    if (hasErrorIdError(res, err, question)) return; 
 
     var responses = question.responses.map(r => {return {text: r.text, id: r._id}; });
 
@@ -150,14 +130,7 @@ router.get('/id/:id', function(req, res) {
 
 router.get('/populate/:id', function(req, res) {
   QuestionModel.findById(req.params.id).populate('responses').exec(function(err, question) {
-    // if the name is not a valid id hex string, a CastError will occur
-    if ((err && err.name === 'CastError') || !question) {
-      return res.sendStatus(404);
-    } 
-
-    if (err) {
-      return res.sendStatus(500);
-    }
+    if (hasErrorIdError(res, err, question)) return; 
 
     var labels = question.responses.map(r => r.text);
     var counts = question.responses.map(r => r.responseCount);
@@ -168,24 +141,12 @@ router.get('/populate/:id', function(req, res) {
 
 router.post('/vote', function(req, res) {
     AnswerModel.findById(req.body.vote, function(err, answer) {
-      if ((err && err.name === 'CastError') || !answer) {
-        return res.sendStatus(404);
-      } 
-  
-      if (err) {
-        console.error(err.toString());
-        return res.sendStatus(500);
-      }
+
+      if (hasErrorIdError(res, err, answer)) return; 
 
       UserModel.findById(req.user.userId, function(err, user) {
-        if ((err && err.name === 'CastError') || !user) {
-          return res.sendStatus(404);
-        } 
-    
-        if (err) {
-          console.error(err.toString());
-          return res.sendStatus(500);
-        }
+
+        if (hasErrorIdError(res, err, user)) return; 
 
         answer.agreedWithBy.push(user);
         answer.save(function(err) {
@@ -207,5 +168,20 @@ router.post('/vote', function(req, res) {
       });
     });
 });
+
+function hasErrorIdError(res, err, doc) {
+  if ((err && err.name === 'CastError') || !doc) {
+    res.sendStatus(404);
+    return true;
+  } 
+
+  if (err) {
+    console.error(err.toString());
+    res.sendStatus(500);
+    return true;
+  }
+
+  return false;
+}
 
 module.exports = router;
