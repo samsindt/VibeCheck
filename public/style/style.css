@@ -188,3 +188,7 @@ select {
 .chartLink {
   color: gray;
 }
+
+.pollId {
+  font-size: 0.000001px;
+}
