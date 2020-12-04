@@ -44,10 +44,6 @@ input {
   color: white;
 }
 
-canvas{
-  height: 50;
-}
-
 .top {
   background-color: rgb(41, 41, 41);
   display: flex;
