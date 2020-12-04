@@ -6,10 +6,12 @@
         <link href="../../style/footer.css" rel='stylesheet' type="text/css">
     </head>
     <body>
+    <div id="page-container">
+    <div id="content-wrap">
         {{>loggedInHeader}}
         <div class = "pollId" id = "pollId">{{pollId}}</div>
         <div class = "indexRow">
-            <div class = "indexColumn">
+            <div class = "pollColumn">
                 <div class = "justify voteButton"><input type="submit" value="Vote"></div>
                 <div class = "centerWrapper">
                     <div class = "justify">{{title}}</div>
@@ -26,6 +28,8 @@
                 </div>
             </div>
         </div>
+        </div>
         {{>footer}}
+        </div>
     </body>
 </html>
