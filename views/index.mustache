@@ -7,15 +7,17 @@
     </head>
     <body>
         {{>loggedInHeader}}
+        <div class = "pollId" id = "pollId">{{pollId}}</div>
         <div class="indexRow">
             <div class="indexColumn">
             <div class="centerWrapper">
-                <div class="justify">Popular Poll</div>
-                <div class="justify">{{question}}</div>
-                <div class="justify">{{#pollData}}</div>
-                <div class="justify">{{text}} : {{numVotes}}</div>
-                <div class="justify">{{/pollData}}</div>
-                <div class="justify">Votes Total : {{totalVotes}}</div>
+            <div class = "justify">Random Poll</div>
+            <div class = "justify"><a href="/poll/id/{{pollId}}">{{question}}</a></div>
+                <div class = "justify">
+                    <canvas id="chart"></canvas>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                    <script src="/script/poll.js"></script>
+                </div>
             </div>
             </div>
             <div class = "indexColumn vibe">

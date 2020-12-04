@@ -162,6 +162,10 @@ input {
   margin: 0 auto;
 }
 
+.justify a {
+  color: black;
+}
+
 .float-left {
   justify-content: left;
   display: flex;
@@ -174,7 +178,7 @@ select {
 }
 
 .vibe {
-  margin: 100px 0px 0px 0px;
+  margin: 200px 0px 0px 0px;
 }
 
 .poll {
@@ -192,3 +196,4 @@ select {
 .pollId {
   font-size: 0.000001px;
 }
+

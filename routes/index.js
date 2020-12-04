@@ -4,52 +4,17 @@ var QuestionModel = require('../models/question');
 var AnswerModel = require('../models/answer');
 
 router.get('/', function(req, res) {
-  QuestionModel.find().populate('responses').exec(function(err, docs) {
+  QuestionModel.findOneRandom({}, {}, {populate: 'responses'}, function(err, question) {
     if (err) {
-      console.error("Error finding all polls by popularity: " + err);
-      return res.sendStatus(500);
+        console.error("Error: " + err.toString());
+        res.sendStatus(500);
+        return;
     }
 
-    let responsePayload = [];
-
-    docs.sort((a, b) => b.popularity - a.popularity);
-
-    docs.forEach(question => {
-      responsePayload.push(
-        {
-          text: question.text,
-          id: question._id,
-          numResponses: question.popularity
-        }
-      );
-    });
-    
-    QuestionModel.findById(responsePayload[0].id, function (err, questionTitle) {
-      AnswerModel.findById(questionTitle.responses[0], function (err, answer){
-        AnswerModel.find({inResponseTo: answer.inResponseTo}).populate(
-                          'agreedWithBy').exec(function(err, docs) {
-          var poll = {docs: []};
-          var i = 0;
-
-          if (err) {
-            console.error("Error finding all polls by popularity: " + err);
-            return res.sendStatus(500);
-          }
-          while (docs[i]){
-            poll.docs.push({
-              text: docs[i].text,
-              numVotes: docs[i].agreedWithBy.length
-            });
-            ++i;
-          }
-
-          res.render('index', {title: 'VibeCheck',
-                      totalVotes: responsePayload[0].numResponses,
-                      question: responsePayload[0].text, 
-                      pollId: responsePayload[0].id});
-        });
-      });
-    });
+    res.render('index', {title: 'VibeCheck',
+                      totalVotes: question.numResponses,
+                      question: question.text, 
+                      pollId: question._id});
   });
 });
 
