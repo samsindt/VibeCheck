@@ -1,7 +1,9 @@
 ## Dev Setup
 
-After cloning the repo, move into the project directory and run `npm install` to install all project dependencies.
-You should see that the directory `node_modules` has been created in the root of the project directory.
+After cloning the repo, move into the project directory and run `npm install` to install all project dependencies. 
+You should see that the directory `node_modules` has been created in the root of the project directory. 
+
+To seed the database, run `node seedDB.js`. 
 
 To run the server while developing, run `npm run devserver`. This script uses [nodemon](https://www.npmjs.com/package/nodemon)
 to restart the server every time a file is saved. 
