@@ -58,7 +58,7 @@ router.post('/create', function(req, res) {
 
   newQuestion.save(function(err) {
     if (err) {
-      return res.json({ success: false, error: err}); // probably should redirect to dedicated error page.
+      return res.json({ success: false, error: err}); 
     }
   res.json({ success: true});
   });
@@ -87,7 +87,6 @@ router.get('/popular', function(req, res) {
       );
     });
 
-    // instead of sending json, responsePayload could be used to render a mustache page
     res.render('chartList', {title: 'Popular Charts', charts: questions});
   })
 });
