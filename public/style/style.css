@@ -197,3 +197,7 @@ select {
   font-size: 0.000001px;
 }
 
+.voteButton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
