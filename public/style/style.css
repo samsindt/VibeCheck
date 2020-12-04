@@ -132,6 +132,7 @@ input {
 
 .footer {
   display: inline;
+  color: white;
 }
 
 .sign-in-sign-up {
@@ -273,4 +274,8 @@ select {
 
 .poll-answer {
   display: inline-block;
+}
+
+.chartLink {
+  color: gray;
 }

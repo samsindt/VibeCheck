@@ -1,19 +1,55 @@
 <html>
     <head>
-        <title>Create Poll</title>
+        <title>CreatePollPage</title>
+        <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
     </head>
-    <body>
-    {{title}}
-       <form id="createPoll_form">
-        <legend>Poll</legend>
-        <input type="submit"><br>
-        <input type="text" id="question" name="question" placeholder="question" required><br>
-        <input type="text" id="choice1" name="choice1" placeholder="choice1" required><br>
-        <input type="text" id="choice2" name="choice2" placeholder="choice2" required><br>
-        <input type="text" id="choice3" name="choice3" placeholder="choice3" required><br>
-        <input type="text" id="choice4" name="choice4" placeholder="choice4" required><br>
-        <input type="text" id="choice5" name="choice5" placeholder="choice5" required><br>
-      </form>
-        <script type="text/javascript" src="/script/createPoll.js"></script>
-    </body>
+<body>
+    <div class = "top">
+        <div class = "dropdown-bar">
+            <div id="dropdown">
+                <div class = "bar1"></div>
+                <div class = "bar2"></div>
+                <div class = "bar3"></div>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="">Your Charts</a>
+                    <a href="/account/profile">Profile</a>
+                    <a id="logout">Log Out</button>
+                    <script type="text/javascript" src="/script/logout.js"></script>
+                </div>
+            </div>
+        </div>
+        <div class = "title-bar">
+            <img src = "/img/VibeCheck_Logo.png" class = "logo">
+            <a href = "http://localhost:3000/">
+                VibeCheck
+            </a>
+        </div>
+    </div>
+    <div class = "indexRow">
+        <div class = "indexColumn">
+          <div class = "centerWrapper">
+            <div class = "justify">Create a Poll</div>
+                <form id="createPoll_form">
+                    <div class = "justify"><input type="text" id="question" name="question" placeholder="Question..." required></div>
+                    <div class = "justify"><input type="text" id="choice1" name="choice1" placeholder="Option 1..." required></div>
+                    <div class = "justify"><input type="text" id="choice2" name="choice2" placeholder="Option 2..." required></div>
+                    <div class = "justify"><input type="text" id="choice3" name="choice3" placeholder="Option 3..." required></div>
+                    <div class = "justify"><input type="text" id="choice4" name="choice4" placeholder="Option 4..." required></div>
+                    <div class = "justify"><input type="text" id="choice5" name="choice5" placeholder="Option 5..." required></div>
+                    <input type="submit">
+                </form>
+                <script type="text/javascript" src="/script/createPoll.js"></script>
+          </div>
+        </div>
+    </div>
+    <div class = "bottom">
+        <ul>
+            <li class = "footer"><a href="">Your Charts</a> | </li>
+            <li class = "footer"><a href="/account/profile">Profile</a> | </li>
+            <li class = "footer"><a id="logout">Log Out</li>
+        </ul>
+    </div>
+</body>
 </html>
+
+<script type = "text/javascript" src = "/script/dropdown.js"></script>

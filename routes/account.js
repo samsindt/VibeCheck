@@ -161,7 +161,7 @@ router.get('/profile', verifyJWTCookie, function(req, res) {
         if (err) {
             return res.status(422).json( {success: false});
         }
-        console.log(user);
+        
         if (user) {
             res.render('profile', {username: user.username, 
                                     firstname: user.firstname, 

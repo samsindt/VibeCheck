@@ -12,7 +12,7 @@
           formData.forEach((value, key) => rawObj[key] = value);
           var jsonData = JSON.stringify(rawObj);
   
-          fetch('/create', {
+          fetch('/poll/create', {
               method: 'POST',
               credentials: 'include',
               body: jsonData,
