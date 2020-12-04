@@ -1,31 +1,37 @@
 <html>
     <head>
-        <title>PollPage</title>
-        <link href="../../style/style.css" rel="stylesheet" type="text/css">
+        <title>{{title}}</title>
+        <link href = "../../style/style.css" rel = "stylesheet" type = "text/css">
         <link href="../../style/header.css" rel="stylesheet" type="text/css">
         <link href="../../style/footer.css" rel='stylesheet' type="text/css">
     </head>
+    <div class = "pollId" id = "pollId">{{pollId}}</div>
     <body>
         {{>loggedInHeader}}
         <div class = "pollId" id = "pollId">{{pollId}}</div>
         <div class = "indexRow">
             <div class = "indexColumn">
-                <div class = "justify voteButton"><input type="submit" value="Vote"></div>
                 <div class = "centerWrapper">
                     <div class = "justify">{{title}}</div>
-                        <canvas id="chart"></canvas> 
+                    <div class = "justify">       
+                        <canvas type = "vote" id="chart"></canvas> 
                         <form id="vote_form">
-                                <div class = "justify">{{#responses}}</div>
-                                <div class = "justify"><input type="radio" id="{{id}}" name="vote" value="{{id}}"></div>
-                                <div class = "justify"><label type="vote" for="{{id}}">{{text}}</label></div>
-                                <div class = "justify">{{/responses}}</div>
+                                {{#responses}}
+                                <input type="radio" id="{{id}}" name="vote" value="{{id}}">
+                                <div class = "justify">
+                                    <label id = "vote" for="{{id}}">{{text}}</label>
+                                </div>
+                                {{/responses}}
+                                <input type="submit" value="Vote">
                         </form>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                        <script src="/script/poll.js"></script>
                     </div>
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-                    <script src="/script/poll.js"></script>
                 </div>
             </div>
         </div>
         {{>footer}}
     </body>
-</html>
+</html> 
+
+<script type = "text/javascript" src = "/script/dropdown.js"></script>

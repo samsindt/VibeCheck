@@ -200,14 +200,16 @@ select {
   margin-bottom: 20px;
 }
 
-[type="radio"]{
-  height: 20px;
+[id=vote_form]{
+  font-size: 25px;
+  margin: 40 0 0 0;
 }
 
-[type="vote"]{
-  font-size: 20px;
+[type=radio] {
+  height: 30px;
+
 }
 
-.embiggen {
-  font-size: 35px;
+[type=vote] {
+  margin: 0% -25% 0% 0%;
 }
