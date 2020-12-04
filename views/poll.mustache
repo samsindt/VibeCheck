@@ -1,7 +1,7 @@
 <html>
     <head>
-        <title>PollPage</title>
-        <link href = "visual.css" rel = "stylesheet" type = "text/css">
+        <title>{{title}}</title>
+        <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
         <div class = "top">
@@ -29,7 +29,7 @@
         <div class = "indexRow">
             <div class = "indexColumn">
                 <div class = "centerWrapper">
-                    <div class = "justify">{{title}}</div>
+                    <div class = "justify"> {{title}}</div> 
                         <canvas id="chart"></canvas> 
                         <form id="vote_form">
                                 <div class = "justify">{{#responses}}</div>
@@ -38,10 +38,9 @@
                                 <div class = "justify"><label for="{{id}}">{{text}}</label></div>
                                 <div class = "justify">{{/responses}}</div>
                         </form>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                        <script src="/script/poll.js"></script>
                     </div>
-                    <div class = "justify"><input type="submit" value="Vote"></div>
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-                    <script src="/script/poll.js"></script>
                 </div>
             </div>
         </div>
