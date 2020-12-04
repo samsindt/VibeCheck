@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var random = require('mongoose-simple-random');
 
 var QuestionSchema = new mongoose.Schema({
     text: {type: String, required:true},
@@ -15,5 +16,7 @@ QuestionSchema.virtual('popularity').get(function() {
 
     return totalResponses;
 });
+
+QuestionSchema.plugin(random);
 
 module.exports = mongoose.model('Question', QuestionSchema);

@@ -162,6 +162,10 @@ input {
   margin: 0 auto;
 }
 
+.justify a {
+  color: black;
+}
+
 .float-left {
   justify-content: left;
   display: flex;
