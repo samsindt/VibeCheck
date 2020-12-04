@@ -27,7 +27,9 @@ input {
   border-radius: 10px;
   border: 1px solid lightgray;
 }
-
+[type=radio] {
+  height: 40px;
+}
 [type=submit] { 
   font-family: "Microsoft Yi Baiti";
   font-size: 36px;
@@ -172,7 +174,7 @@ select {
 }
 
 .vibe {
-  margin: 30px 0px 0px 0px;
+  margin: 100px 0px 0px 0px;
 }
 
 .poll {
@@ -185,4 +187,8 @@ select {
 
 .chartLink {
   color: gray;
+}
+
+.pollId {
+  font-size: 0.000001px;
 }
