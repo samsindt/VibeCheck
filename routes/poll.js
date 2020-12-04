@@ -22,6 +22,7 @@ router.post('/create', function(req, res) {
 
     newQuestion.postedBy = user;
     newQuestion.text = req.body.question;
+    user.postedQuestions.push(newQuestion);
 
     var answers = [];
 
