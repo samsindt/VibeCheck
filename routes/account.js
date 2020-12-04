@@ -79,7 +79,7 @@ router.post('/register', function(req, res) {
     });
 });
 
-router.get('/updateProfile', verifyJWTCookie, function(req, res) {
+router.get('/update', verifyJWTCookie, function(req, res) {
     UserModel.findById (req.user.userId, function(err, user) {
         if (err) {
             return res.status(422).json({success: false});
