@@ -10,6 +10,7 @@
         <div class = "pollId" id = "pollId">{{pollId}}</div>
         <div class = "indexRow">
             <div class = "indexColumn">
+                <div class = "justify voteButton"><input type="submit" value="Vote"></div>
                 <div class = "centerWrapper">
                     <div class = "justify">{{title}}</div>
                         <canvas id="chart"></canvas> 
@@ -20,7 +21,6 @@
                                 <div class = "justify">{{/responses}}</div>
                         </form>
                     </div>
-                    <div class = "justify"><input type="submit" value="Vote"></div>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
                     <script src="/script/poll.js"></script>
                 </div>
