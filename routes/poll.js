@@ -74,22 +74,21 @@ router.get('/popular', function(req, res) {
       return res.sendStatus(500);
     }
 
-    let responsePayload = [];
+    let questions = [];
 
     docs.sort((a, b) => b.popularity - a.popularity);
 
     docs.forEach(question => {
-      responsePayload.push(
+      questions.push(
         {
           text: question.text,
           id: question._id,
-          numResponses: question.popularity
         }
       );
     });
 
     // instead of sending json, responsePayload could be used to render a mustache page
-    res.json(responsePayload);
+    res.render('chartList', {title: 'Popular Charts', charts: questions});
   })
 });
 
