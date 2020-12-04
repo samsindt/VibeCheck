@@ -24,7 +24,7 @@
 
           .then(data => {
               if (data.success) {
-                
+                window.location.href = '/';
               }
               else {
                 alert('Error: ' + response.msg);
