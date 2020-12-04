@@ -1,26 +1,25 @@
 <html>
     <head>
-        <title>CreatePollPage</title>
-        <link href="../style/style.css" rel="stylesheet" type="text/css">
+        <title>Create Poll</title>
+        <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
         <link href="../style/header.css" rel="stylesheet" type="text/css">
         <link href="../style/footer.css" rel='stylesheet' type="text/css">
     </head>
 <body>
-    {{>loggedInHeader}}
+   {{>loggedInHeader}}
     <div class = "indexRow">
         <div class = "indexColumn">
           <div class = "centerWrapper">
             <div class = "justify">Create a Poll</div>
                 <form id="createPoll_form">
-                    <div class = "justify"><input type="text" id="question" name="question" placeholder="Question..." required></div>
-                    <div class = "justify"><input type="text" id="choice1" name="choice1" placeholder="Option 1..." required></div>
-                    <div class = "justify"><input type="text" id="choice2" name="choice2" placeholder="Option 2..." required></div>
-                    <div class = "justify"><input type="text" id="choice3" name="choice3" placeholder="Option 3..." required></div>
-                    <div class = "justify"><input type="text" id="choice4" name="choice4" placeholder="Option 4..." required></div>
-                    <div class = "justify"><input type="text" id="choice5" name="choice5" placeholder="Option 5..." required></div>
                     <input type="submit">
+                    <div class = "justify"><input name="question" type="text" placeholder="Ask a questin" required></div>
+                    <div class = "justify"><input name="1" type="text" placeholder="Add a possible answer" required></div>
+                    <div class = "justify"><input name="2" type="text" placeholder="Add a possible answer" required></div>
                 </form>
+                <button id="addAnswer">Add Answer</button>
                 <script type="text/javascript" src="/script/createPoll.js"></script>
+                <script type="text/javascript" src="/script/addAnswer.js"></script>
           </div>
         </div>
     </div>
