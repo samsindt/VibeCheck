@@ -2,52 +2,24 @@
     <head>
         <title>PollListPage</title>
         <link href = "../style/style.css" rel = "stylesheet" type = "text/css">
+        <link href="../style/header.css" rel="stylesheet" type="text/css">
+        <link href="../style/footer.css" rel='stylesheet' type="text/css">
     </head>
 <body>
-    <div class = "top">
-        <div class = "dropdown-bar">
-            <div id="dropdown">
-                <div class = "bar1"></div>
-                <div class = "bar2"></div>
-                <div class = "bar3"></div>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="/account/profile">Profile</a>
-                    <a id="logout">Log Out</a>
-                    <script type="text/javascript" src="/script/logout.js"></script>
-                </div>
-            </div>
-        </div>
-        <div class = "title-bar">
-            <img src = "/img/VibeCheck_Logo.png" class = "logo">
-            <a href = "http://localhost:3000/">
-                VibeCheck
-            </a>
-        </div>
-    </div>
+   {{>loggedInHeader}}
     <div class = "indexRow">
         <div class = "indexColumn">
           <div class = "centerWrapper">
-            <div class = "justify">Polls Made By You</div>
-            <ul>
-                <li><a href="" class = "chartLink">How many bananas can you eat in one sitting?</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class = "indexColumn vibe">
-          <div class = "centerWrapper">
-            <div class = "justify">Polls You Participated In</div>
-            <ul>
-                <li><a href="" class = "chartLink">How are you feeling today on a scale of 1 to Kim K.?</a></li>
-            </ul>
+            <div class = "justify">{{title}}</div>
+            <ol>
+                {{#charts}}
+                <li><a href="/poll/id/{{id}}" class = "chartLink">{{text}}</a></li>
+                {{/charts}}
+            </ol>
           </div>
         </div>
     </div>
-    <div class = "bottom">
-        <ul>
-            <li class = "footer"><a href="/account/profile">Profile</a> | </li>
-            <li class = "footer"><a id="logout">Log Out</a></li>
-        </ul>
-    </div>
+    {{>footer}}
 </body>
 </html>
 
