@@ -170,4 +170,19 @@ router.post('/vote', function(req, res) {
     });
 });
 
+function hasErrorIdError(res, err, doc) {
+  if ((err && err.name === 'CastError') || !doc) {
+    res.sendStatus(404);
+    return true;
+  } 
+
+  if (err) {
+    console.error(err.toString());
+    res.sendStatus(500);
+    return true;
+  }
+
+  return false;
+}
+
 module.exports = router;
