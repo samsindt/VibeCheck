@@ -207,3 +207,7 @@ select {
 [type="vote"]{
   font-size: 20px;
 }
+
+.embiggen {
+  font-size: 35px;
+}

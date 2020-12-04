@@ -8,26 +8,28 @@
 </head>
 <body>
     {{>loggedInHeader}}
-    <h1 class = "profile-title">Profile</h1>
-    <div class = "profile-info">
-        <div class = "info">
-            First Name
+    <h1 class = "profile-title embiggen">Profile</h1>
+    <div class = "centerWrapper"
+        <div class = "profile-info">
+            <div class = "info embiggen">
+                First Name
+            </div>
+                {{firstname}}
+            <div class = "info embiggen">
+                Last Name
+            </div>
+                {{lastname}}
+            <div class = "info embiggen">
+                Username
+            </div>
+                {{username}}
+            <div class = "info embiggen">
+                E-mail
+            </div>
+                {{email}}
         </div>
-        {{firstname}}
-        <div class = "info">
-            Last Name
-        </div>
-        {{lastname}}
-        <div class = "info">
-            Username
-        </div>
-        {{username}}
-        <div class = "info">
-            E-mail
-        </div>
-        {{email}}
+        <div class = "justify embiggen"><a id="updateProfileLink" href="/account/update">Update Profile</a></div>
     </div>
-    <a id="updateProfileLink" href="/account/update">Update Profile</a>
     {{>footer}}
 </body>
 </html>
