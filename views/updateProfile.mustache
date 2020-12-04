@@ -2,28 +2,11 @@
     <head>
         <title>UpdateProfile</title>
         <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
+        <link href="../style/header.css" rel="stylesheet" type="text/css">
+        <link href="../style/footer.css" rel='stylesheet' type="text/css">
     </head>
     <body>
-        <div class = "top">
-            <div class = "dropdown-bar">
-                <div id="dropdown">
-                    <div class = "bar1"></div>
-                    <div class = "bar2"></div>
-                    <div class = "bar3"></div>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="">Profile</a>
-                        <a id="logout">Log Out</a>
-                        <script type="text/javascript" src="/script/logout.js"></script>
-                    </div>
-                </div>
-            </div>
-        <div class = "title-bar">
-            <img src = "/img/VibeCheck_Logo.png" class = "logo">
-                <a href = "http://localhost:3000/">
-                    VibeCheck
-                </a>
-            </div>
-        </div>                                                          
+       {{>loggedInHeader}}                                                       
         <div>
             Update Profile for {{username}}
             <form name="updateForm" id="updateProfile_form">
@@ -43,12 +26,7 @@
                 <input type="submit" value="Update" id = "updateMsg">
             </form>
             <script type="text/javascript" src="/script/updateProfile.js"></script>
-            <div class = "bottom">
-                <ul>
-                    <li class = "footer"><a href="">Profile</a> | </li>
-                    <li class = "footer"><a id="logout">Log Out</a></li>
-                </ul>
-            </div>
+            {{>footer}}
         </div>
     </body>
 </html>
