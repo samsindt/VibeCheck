@@ -42,11 +42,12 @@ router.get('/', function(req, res) {
             });
             ++i;
           }
-          
+
           res.render('index', {title: 'VibeCheck',
                       totalVotes: responsePayload[0].numResponses,
                       question: responsePayload[0].text, 
-                      pollData: poll.docs});
+                      pollData: poll.docs,
+                      pollId: responsePayload[0].id});
         });
       });
     });
