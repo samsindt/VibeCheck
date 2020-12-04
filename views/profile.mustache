@@ -1,31 +1,13 @@
 <html>
 <head>
     <title>ProfilePage</title>
-    <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
+    <link href="../style/style.css" rel="stylesheet" type="text/css">
+    <link href="../style/header.css" rel="stylesheet" type="text/css">
+    <link href="../style/footer.css" rel='stylesheet' type="text/css">
+    <link href="../style/profile.css" rel='stylesheet' type="text/css">
 </head>
 <body>
-    <div class = "top">
-        <div class = "dropdown-bar">
-            <div id="dropdown">
-                <div class = "bar1"></div>
-                <div class = "bar2"></div>
-                <div class = "bar3"></div>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="/poll/create">Create A Chart</a>
-                    <a href="/poll/madecharts">Your Charts</a>
-                    <a href="/account/updateProfile">Update Profile</a>
-                    <a id="logout">Log Out</a>
-                    <script type="text/javascript" src="/script/logout.js"></script>
-                </div>
-            </div>
-        </div>
-        <div class = "title-bar">
-            <img src = "/img/VibeCheck_Logo.png" class = "logo">
-            <a href = "http://localhost:3000/">
-                VibeCheck
-            </a>
-        </div>
-    </div>
+    {{>loggedInHeader}}
     <h1 class = "profile-title">Profile</h1>
     <div class = "profile-info">
         <div class = "info">
@@ -45,16 +27,7 @@
         </div>
         {{email}}
     </div>
-    <div class = "bottom">
-        <ul>
-            <li class = "footer"><a href="/poll/create">Create A Chart</a></li>
-            <li class = "footer"><a href="">Charts Made</a></li>
-            <li class = "footer"><a href="">Participated In</a></li>
-            <li class = "footer"><a href="/account/updateProfile">Update Profile</a></li>
-            <li class = "footer"><a id="logout">Log Out</a></li>
-        </ul>
-    </div>
+    <a id="updateProfileLink" href="/account/update">Update Profile</a>
+    {{>footer}}
 </body>
 </html>
-
-<script type = "text/javascript" src = "/script/dropdown.js"></script>

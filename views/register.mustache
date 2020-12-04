@@ -2,28 +2,12 @@
     <head>
         <title>RegisterPage</title>
         <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
+        <link href="../style/header.css" rel="stylesheet" type="text/css">
+        <link href="../style/footer.css" rel='stylesheet' type="text/css">
     </head>
     <body>
-        <div class = "top">
-            <div class = "dropdown-bar">
-                <div id="dropdown">
-                    <div class = "bar1"></div>
-                    <div class = "bar2"></div>
-                    <div class = "bar3"></div>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="/account/login">Log In</a>
-                        <a href="/account/register">Register</a>
-                    </div>
-                </div>
-            </div>
-        <div class = "title-bar">
-            <img src = "/img/VibeCheck_Logo.png" class = "logo">
-                <a href = "http://localhost:3000/">
-                    VibeCheck
-                </a>
-            </div>
-        </div>
-        <div class = "registrationWrapper"                                                        
+       {{>loggedOutHeader}}
+        <div class = "registrationWrapper">                                                      
             <div class = "justify">
                 Registration
                 <form id="registration_form">
@@ -43,15 +27,8 @@
                     <input type="submit">
                 </form>
                 <a href="/account/login">Login</a>
-                <script type="text/javascript" src="/script/register.js"></script>
             </div>
         </div>
-        <div class = "bottom">
-            <ul>
-                <li class = "footer"><a href="/account/login">Log In</a></li>
-                <li class = "footer"><a href="/account/register">Register</a></li>
-            </ul>
-        </div>
+        {{>footer}}
     </body>
 </html>
-<script type = "text/javascript" src = "/script/dropdown.js"></script>
