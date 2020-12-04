@@ -106,7 +106,7 @@ router.get('/id/:id', function(req, res) {
 
     var responses = question.responses.map(r => {return {text: r.text, id: r._id}; });
 
-    res.render('poll', {title: question.text, responses: responses, pollId: req.params.id}});
+    res.render('poll', {title: question.text, responses: responses, pollId: req.params.id});
   });
 });
 
