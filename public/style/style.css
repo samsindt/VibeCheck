@@ -200,6 +200,10 @@ select {
   margin-bottom: 20px;
 }
 
+.embiggen {
+  font-size: 35px;
+} 
+
 [id=vote_form]{
   font-size: 25px;
   margin: 40 0 0 0;
