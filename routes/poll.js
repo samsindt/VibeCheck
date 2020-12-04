@@ -108,7 +108,26 @@ router.get('/your-questions', function(req, res) {
 
     res.render('chartList', {title: 'Your Questions', charts: charts});
   })
-}); 
+});
+
+router.get('/your-answers', function(req, res) {
+  UserModel.findById(req.user.userId).populate({path:'postedAnswers', populate: {path: 'inResponseTo'}}).exec(function(err, user) {
+    if ((err && err.name === 'CastError') || !user) {
+      return res.sendStatus(404);
+    } 
+
+    if (err) {
+      return res.sendStatus(500);
+    }
+
+    var charts = user.postedAnswers.map(a => {
+      console.log(a.inResponseTo);
+      return {text: a.inResponseTo.text, id: a.inResponseTo._id}
+    });
+
+    res.render('chartList', {title: 'Your Answers', charts: charts});
+  });
+})
 
 router.get('/id/:id', function(req, res) {
   QuestionModel.findById(req.params.id).populate('responses').exec(function(err, question) {
