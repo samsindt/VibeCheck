@@ -27,7 +27,9 @@ input {
   border-radius: 10px;
   border: 1px solid lightgray;
 }
-
+[type=radio] {
+  height: 40px;
+}
 [type=submit] { 
   font-family: "Microsoft Yi Baiti";
   font-size: 36px;
