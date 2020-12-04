@@ -247,62 +247,62 @@ async function seedAnswers() {
         {
             text: 'Yes',
             inResponseTo: questions[2],
-            agreedWithBy: [users[0], users[2]]
+            agreedWithBy: [users[3], users[4]]
         },
         {
             text: 'Really a question?',
             inResponseTo: questions[2],
-            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6], users[7]]
+            agreedWithBy: [users[5], users[6], users[7]]
         },
         {
             text: 'Revolutionary',
             inResponseTo: questions[3],
-            agreedWithBy: [users[0], users[2], users[3], users[4], users[5], users[1]]
+            agreedWithBy: [users[0], users[2], users[3], users[4], users[5]]
         },
         {
             text: 'Dreadful',
             inResponseTo: questions[3],
-            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5]]
+            agreedWithBy: [users[6], users[7]]
         },
         {
             text: 'Dont know',
             inResponseTo: questions[3],
-            agreedWithBy: [users[0], users[2], users[1], users[3]]
+            agreedWithBy: [users[1]]
         },
         {
             text: 'Welp',
             inResponseTo: questions[3],
-            agreedWithBy: [users[0], users[2], users[1], users[3], users[4], users[5], users[6]]
+            agreedWithBy: []
         },
         {
             text: 'It is what it is',
             inResponseTo: questions[3],
-            agreedWithBy: [users[0], users[1], users[2], users[3], users[4]]
+            agreedWithBy: []
         },
         {
             text: 'Amazing',
             inResponseTo: questions[4],
-            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6], users[7]]
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4]]
         },
         {
             text: 'Wonderful',
             inResponseTo: questions[4],
-            agreedWithBy: [users[0], users[1], users[2], users[3], users[4]]
+            agreedWithBy: [users[7]]
         },
         {
             text: 'Okay',
             inResponseTo: questions[4],
-            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5]]
+            agreedWithBy: [users[5]]
         },
         {
             text: 'Ehh',
             inResponseTo: questions[4],
-            agreedWithBy: [users[2]]
+            agreedWithBy: [users[6]]
         },
         {
             text: 'Terrible',
             inResponseTo: questions[4],
-            agreedWithBy: [users[0], users[1], users[2], users[3]]
+            agreedWithBy: []
         },
         {
             text: 'Terrifying',
@@ -312,47 +312,47 @@ async function seedAnswers() {
         {
             text: 'Exotic',
             inResponseTo: questions[5],
-            agreedWithBy: [users[0], users[1]]
+            agreedWithBy: [users[4], users[5]]
         },
         {
             text: 'Adventurious',
             inResponseTo: questions[5],
-            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6], users[7]]
+            agreedWithBy: [users[6], users[7]]
         },
         {
             text: 'Mysterious',
             inResponseTo: questions[5],
-            agreedWithBy: [users[0], users[1], users[2]]
+            agreedWithBy: []
         },
         {
             text: 'You only live once',
             inResponseTo: questions[5],
-            agreedWithBy: [users[0]]
+            agreedWithBy: []
         },
         {
             text: 'Lets go!!! blast off!',
             inResponseTo: questions[6],
-            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6], users[7]]
+            agreedWithBy: [users[0], users[1], users[2], users[3]]
         },
         {
             text: 'ecstatic',
             inResponseTo: questions[6],
-            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6]]
+            agreedWithBy: [users[4], users[5], users[6]]
         },
         {
             text: 'Scary',
             inResponseTo: questions[6],
-            agreedWithBy: [users[0], users[1], users[2]]
+            agreedWithBy: [users[7]]
         },
         {
             text: 'Mysterious',
             inResponseTo: questions[6],
-            agreedWithBy: [users[0], users[1], users[2], users[3]]
+            agreedWithBy: []
         },
         {
             text: 'Why not?',
             inResponseTo: questions[6],
-            agreedWithBy: [ users[0]]
+            agreedWithBy: []
         },
         {
             text: 'I own the world',
@@ -362,22 +362,22 @@ async function seedAnswers() {
         {
             text: 'ecstatic',
             inResponseTo: questions[7],
-            agreedWithBy: [users[0]]
+            agreedWithBy: [users[3]]
         },
         {
             text: 'Im a god',
             inResponseTo: questions[7],
-            agreedWithBy: [users[0], users[1], users[2]]
+            agreedWithBy: [users[4]]
         },
         {
             text: 'Mysterious',
             inResponseTo: questions[7],
-            agreedWithBy: [users[0], users[1], users[2], users[3]]
+            agreedWithBy: [users[5]]
         },
         {
             text: 'Lets go!',
             inResponseTo: questions[7],
-            agreedWithBy: [ users[0]]
+            agreedWithBy: [users[6], users[7]]
         },
 
     ];
