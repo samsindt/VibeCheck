@@ -1,6 +1,6 @@
 (function() {
 
-    var pageId = window.location.pathname.split('/')[3];
+    var pageId = document.getElementById('pollId').textContent;
 
     var ctx = document.getElementById('chart').getContext('2d');
 
