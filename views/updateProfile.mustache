@@ -23,26 +23,27 @@
                     VibeCheck
                 </a>
             </div>
-        </div>                                                          
-        <div>
-            Update Profile for {{username}}
-            <form name="updateForm" id="updateProfile_form">
-                <input type="text" id="username" name="username" placeholder="Username">
-                <input type="password" id="password" name="password" placeholder="Password">
-                <input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password">
-                <input type="text" id="first_name" name="firstname" placeholder="First name">
-                <input type="text" id="last_name" name="lastname" placeholder="Last name">
-                <input type="email" id="email" name="email" placeholder="Email address">
-                <label for="security_question">Security Question</label>
-                <select name="securityQuestion" id="security_question">
-                    {{#securityQuestions}}
-                    <option value="{{id}}">{{text}}</option>
-                    {{/securityQuestions}}
-                </select>
-                <input type="text" id="security_question_answer" name="securityQuestionAnswer" >
-                <input type="submit" value="Update" id = "updateMsg">
-            </form>
-            <script type="text/javascript" src="/script/updateProfile.js"></script>
+        </div>
+        <div class = "registrationWrapper">                                              
+                    Update Profile for {{username}}
+                <form name="updateForm" id="updateProfile_form">
+                    <div class = "justify"><input type="text" id="username" name="username" placeholder="Username..."></div>
+                    <div class = "justify"><input type="password" id="password" name="password" placeholder="Password..."></div>
+                    <div class = "justify"><input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm Password..."></div>
+                    <div class = "justify"><input type="text" id="first_name" name="firstname" placeholder="First Name..."></div>
+                    <div class = "justify"><input type="text" id="last_name" name="lastname" placeholder="Last Name..."></div>
+                    <div class = "justify"><input type="email" id="email" name="email" placeholder="Email Address..."></div>
+                    <div class = "justify"><select name="securityQuestion" id="security_question">
+                        {{#securityQuestions}}
+                        <option value="{{id}}">{{text}}</option>
+                        {{/securityQuestions}}
+                    </select></div>
+                    <div class = "justify"><input type="text" id="security_question_answer" name="securityQuestionAnswer" placeholder = "Answer..."></div>
+                    <div class = "justify"><input type="submit" value="Update" id = "updateMsg"></div>
+                </form>
+                <script type="text/javascript" src="/script/updateProfile.js"></script>
+            </div>
+        </div>                                                  
             <div class = "bottom">
                 <ul>
                     <li class = "footer"><a href="">Profile</a> | </li>
@@ -52,5 +53,5 @@
         </div>
     </body>
 </html>
-
+<script type = "text/javascript" src = "/script/dropdown.js"></script>
 <script type = "text/javascript" src="/script/updateMsg.js"></script>
