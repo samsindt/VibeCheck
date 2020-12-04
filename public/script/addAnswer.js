@@ -8,7 +8,7 @@
         newDiv.classList.add('justify');
         var newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
-        newInput.setAttribute('placeholder', 'Add a possible answer');
+        newInput.setAttribute('placeholder', 'Add A Possible Answer...');
         newInput.required = true;
         inputCount++;
         newInput.setAttribute('name', inputCount);
