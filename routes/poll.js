@@ -92,10 +92,30 @@ router.get('/popular', function(req, res) {
   })
 });
 
+router.get('/your-questions', function(req, res) {
+  UserModel.findById(req.user.userId).populate('postedQuestions').exec(function(err, user) {
+    if ((err && err.name === 'CastError') || !user) {
+      return res.sendStatus(404);
+    } 
+
+    if (err) {
+      return res.sendStatus(500);
+    }
+
+    var charts = user.postedQuestions.map(q => {
+      return {text: q.text, id: q._id};
+    })
+
+    res.render('chartList', {title: 'Your Questions', charts: charts});
+  })
+}); 
+
 router.get('/id/:id', function(req, res) {
   QuestionModel.findById(req.params.id).populate('responses').exec(function(err, question) {
+    
     // if the name is not a valid id hex string, a CastError will occur
     if ((err && err.name === 'CastError') || !question) {
+      console.log(req.params.id)
       return res.sendStatus(404);
     } 
 
