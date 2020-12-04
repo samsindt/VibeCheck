@@ -1,16 +1,16 @@
 <html>
     <head>
         <title>PollPage</title>
-        <link href = "/style/style.css" rel = "stylesheet" type = "text/css">
-        <link href="../style/header.css" rel="stylesheet" type="text/css">
-        <link href="../style/footer.css" rel='stylesheet' type="text/css">
+        <link href="../../style/style.css" rel="stylesheet" type="text/css">
+        <link href="../../style/header.css" rel="stylesheet" type="text/css">
+        <link href="../../style/footer.css" rel='stylesheet' type="text/css">
     </head>
-    <div class = "pollId" id = "pollId">{{pollId}}</div>
     <body>
-       {{>loggedInHeader}}
+        {{>loggedInHeader}}
         <div class = "pollId" id = "pollId">{{pollId}}</div>
         <div class = "indexRow">
             <div class = "indexColumn">
+                <div class = "justify voteButton"><input type="submit" value="Vote"></div>
                 <div class = "centerWrapper">
                     <div class = "justify">{{title}}</div>
                         <canvas id="chart"></canvas> 
@@ -21,7 +21,6 @@
                                 <div class = "justify">{{/responses}}</div>
                         </form>
                     </div>
-                    <div class = "justify"><input type="submit" value="Vote"></div>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
                     <script src="/script/poll.js"></script>
                 </div>
@@ -30,6 +29,3 @@
         {{>footer}}
     </body>
 </html>
-
-<script type = "text/javascript" src = "/script/dropdown.js"></script>
-
