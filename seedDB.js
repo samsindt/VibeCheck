@@ -95,6 +95,62 @@ async function seedUsers() {
                 answer: 'horse'
             }
         },
+        { 
+            username: 'bobby',
+            password: 'theRootPassword29',
+            email: 'bobby@root.com',
+            firstname: 'bob',
+            lastname: 'dylan',
+            security: {
+                question: securityQuestions[0],
+                answer: 'i dont have a mother.'
+            },
+        },
+        { 
+            username: 'tom12',
+            password: '12345hello',
+            email: 'tom@theempire.com',
+            firstname: 'tom',
+            lastname: 'tim',
+            security: {
+                question: securityQuestions[1],
+                answer: 'pink.'
+            },
+        },
+        { 
+            username: 'jewels',
+            password: 'diamond12',
+            email: 'shinebright@likeaDiamond.com',
+            firstname: 'ruby',
+            lastname: 'red',
+            security: {
+                question: securityQuestions[1],
+                answer: 'red.'
+            },
+        },
+        { 
+            username: 'jackandjill',
+            password: 'theRoot21',
+            email: 'jack@root.com',
+            firstname: 'jill',
+            lastname: 'jack',
+            security: {
+                question: securityQuestions[3],
+                answer: 'the hill.'
+            },
+        },
+        { 
+            username: 'peterButnotSpiderman',
+            password: 'notsp1derman',
+            email: 'spidermanrocks@spidey.com',
+            firstname: 'peter',
+            lastname: 'parker',
+            security: {
+                question: securityQuestions[3],
+                answer: 'vemon.'
+            },
+        }
+        
     ];
 
     for (content of usersContent) {
@@ -118,8 +174,29 @@ async function seedQuestions() {
         },
         {
             text: 'Was this good year?',
+            postedBy: users[3],
+        },
+        {
+            text: 'What is your vibe for the next year?',
+            postedBy: users[4],
+        },
+        {
+            text: 'What was the vibe of the MJ concert?',
+            postedBy: users[5],
+        },
+        {
+            text: 'What vibe do you have about traveling?',
+            postedBy: users[6],
+        },
+        {
+            text: 'What vibe do you get about living on mars?',
             postedBy: users[1],
-        }
+        },
+        {
+            text: 'What vibe do you think Genghis Khan was on?',
+            postedBy: users[1],
+        },
+        
     ];
 
     for (content of questionsContent) {
@@ -166,7 +243,143 @@ async function seedAnswers() {
             text: 'No',
             inResponseTo: questions[2],
             agreedWithBy: [users[0], users[2]]
-        }
+        },
+        {
+            text: 'Yes',
+            inResponseTo: questions[2],
+            agreedWithBy: [users[0], users[2]]
+        },
+        {
+            text: 'Really a question?',
+            inResponseTo: questions[2],
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6], users[7]]
+        },
+        {
+            text: 'Revolutionary',
+            inResponseTo: questions[3],
+            agreedWithBy: [users[0], users[2], users[3], users[4], users[5], users[1]]
+        },
+        {
+            text: 'Dreadful',
+            inResponseTo: questions[3],
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5]]
+        },
+        {
+            text: 'Dont know',
+            inResponseTo: questions[3],
+            agreedWithBy: [users[0], users[2], users[1], users[3]]
+        },
+        {
+            text: 'Welp',
+            inResponseTo: questions[3],
+            agreedWithBy: [users[0], users[2], users[1], users[3], users[4], users[5], users[6]]
+        },
+        {
+            text: 'It is what it is',
+            inResponseTo: questions[3],
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4]]
+        },
+        {
+            text: 'Amazing',
+            inResponseTo: questions[4],
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6], users[7]]
+        },
+        {
+            text: 'Wonderful',
+            inResponseTo: questions[4],
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4]]
+        },
+        {
+            text: 'Okay',
+            inResponseTo: questions[4],
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5]]
+        },
+        {
+            text: 'Ehh',
+            inResponseTo: questions[4],
+            agreedWithBy: [users[2]]
+        },
+        {
+            text: 'Terrible',
+            inResponseTo: questions[4],
+            agreedWithBy: [users[0], users[1], users[2], users[3]]
+        },
+        {
+            text: 'Terrifying',
+            inResponseTo: questions[5],
+            agreedWithBy: [users[0], users[1], users[2], users[3]]
+        },
+        {
+            text: 'Exotic',
+            inResponseTo: questions[5],
+            agreedWithBy: [users[0], users[1]]
+        },
+        {
+            text: 'Adventurious',
+            inResponseTo: questions[5],
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6], users[7]]
+        },
+        {
+            text: 'Mysterious',
+            inResponseTo: questions[5],
+            agreedWithBy: [users[0], users[1], users[2]]
+        },
+        {
+            text: 'You only live once',
+            inResponseTo: questions[5],
+            agreedWithBy: [users[0]]
+        },
+        {
+            text: 'Lets go!!! blast off!',
+            inResponseTo: questions[6],
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6], users[7]]
+        },
+        {
+            text: 'ecstatic',
+            inResponseTo: questions[6],
+            agreedWithBy: [users[0], users[1], users[2], users[3], users[4], users[5], users[6]]
+        },
+        {
+            text: 'Scary',
+            inResponseTo: questions[6],
+            agreedWithBy: [users[0], users[1], users[2]]
+        },
+        {
+            text: 'Mysterious',
+            inResponseTo: questions[6],
+            agreedWithBy: [users[0], users[1], users[2], users[3]]
+        },
+        {
+            text: 'Why not?',
+            inResponseTo: questions[6],
+            agreedWithBy: [ users[0]]
+        },
+        {
+            text: 'I own the world',
+            inResponseTo: questions[7],
+            agreedWithBy: [users[0], users[1], users[2]]
+        },
+        {
+            text: 'ecstatic',
+            inResponseTo: questions[7],
+            agreedWithBy: [users[0]]
+        },
+        {
+            text: 'Im a god',
+            inResponseTo: questions[7],
+            agreedWithBy: [users[0], users[1], users[2]]
+        },
+        {
+            text: 'Mysterious',
+            inResponseTo: questions[7],
+            agreedWithBy: [users[0], users[1], users[2], users[3]]
+        },
+        {
+            text: 'Lets go!',
+            inResponseTo: questions[7],
+            agreedWithBy: [ users[0]]
+        },
+
     ];
 
     for (content of answersContent) {
