@@ -10,20 +10,19 @@
         <div>
             Update Profile for {{username}}
             <form name="updateForm" id="updateProfile_form">
-                <input type="text" id="username" name="username" placeholder="Username">
-                <input type="password" id="password" name="password" placeholder="Password">
-                <input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm password">
-                <input type="text" id="first_name" name="firstname" placeholder="First name">
-                <input type="text" id="last_name" name="lastname" placeholder="Last name">
-                <input type="email" id="email" name="email" placeholder="Email address">
-                <label for="security_question">Security Question</label>
-                <select name="securityQuestion" id="security_question">
+                <div class = "justify"><input type="text" id="username" name="username" placeholder="Username..."></div>
+                    <div class = "justify"><input type="password" id="password" name="password" placeholder="Password..."></div>
+                    <div class = "justify"><input type="password" id="confirm_password" name="confirmPassword" placeholder="Confirm Password..."></div>
+                    <div class = "justify"><input type="text" id="first_name" name="firstname" placeholder="First Name..."></div>
+                    <div class = "justify"><input type="text" id="last_name" name="lastname" placeholder="Last Name..."></div>
+                    <div class = "justify"><input type="email" id="email" name="email" placeholder="Email Address..."></div>
+                    <div class = "justify"><select name="securityQuestion" id="security_question">
                     {{#securityQuestions}}
                     <option value="{{id}}">{{text}}</option>
                     {{/securityQuestions}}
-                </select>
-                <input type="text" id="security_question_answer" name="securityQuestionAnswer" >
-                <input type="submit" value="Update" id = "updateMsg">
+                </select></div>
+                <div class = "justify"><input type="text" id="security_question_answer" name="securityQuestionAnswer" placeholder = "Answer..."></div>
+                <div class = "justify"><input type="submit" value="Update" id = "updateMsg"></div>
             </form>
             <script type="text/javascript" src="/script/updateProfile.js"></script>
             {{>footer}}
